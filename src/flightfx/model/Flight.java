@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package flightfx;
+package flightfx.model;
 
 import java.util.Calendar;
 
@@ -21,6 +21,10 @@ public class Flight {
     private Calendar arrTime;
     private String duration;
     private int nbrOfConnections;
+    
+    public Flight(){
+        
+    }
 
     public int getId() {
         return id;

@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package flightfx;
+package flightfx.model;
 
 /**
  *
@@ -13,6 +13,10 @@ public class Airport {
     private int id;
     private String city;
     private String code;
+    
+    public Airport(){
+        
+    }
 
     public int getId() {
         return id;

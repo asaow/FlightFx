@@ -3,7 +3,10 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package flightfx;
+package flightfx.model;
+
+import flightfx.model.Flight;
+import flightfx.model.Person;
 
 /**
  *
@@ -13,6 +16,10 @@ public class Booking {
     private int id;
     private Flight flight;
     private Person person;
+    
+    public Booking(){
+        
+    }
 
     public Person getPerson() {
         return person;
