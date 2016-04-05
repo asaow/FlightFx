@@ -57,7 +57,7 @@
                   <Font size="16.0" />
                </font>
             </Label>
-            <ComboBox fx:id="peopleComboBox" prefHeight="40.0" prefWidth="75.0" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+            <ComboBox fx:id="nbrOfPassengersComboBox" prefHeight="40.0" prefWidth="75.0" GridPane.columnIndex="1" GridPane.rowIndex="2" />
             <ComboBox prefHeight="40.0" prefWidth="250.0" GridPane.columnIndex="1" GridPane.rowIndex="1" />
             <ComboBox prefHeight="40.0" prefWidth="250.0" GridPane.columnIndex="1" />
             <RadioButton fx:id="oneWayRadioButton" mnemonicParsing="false" text="Enkelresa" GridPane.columnIndex="1" GridPane.rowIndex="3">
