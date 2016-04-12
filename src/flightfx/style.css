@@ -1,0 +1,120 @@
+
+.root{
+    -fx-background-image: url("citylights.jpg");
+    -fx-background-position: center center;
+    -fx-background-size: 1280 800;
+
+}
+
+.label{
+    -fx-text-fill: #FFFFFF;
+}
+
+.combo-box{
+    -fx-background-color: #ffffff;
+    -fx-text-fill: #594F4F;
+    -fx-background-radius: 0;
+    -fx-opacity: 0.9; 
+}
+
+.combo-box-popup .list-view {
+    -fx-background-color: #594F4F;
+    -fx-opacity: 0.9; 
+    -fx-text-fill:#FFFFFF;
+    -fx-background-radius: 0;
+    -fx-font-size : 13pt;
+ }
+
+ .combo-box-popup .list-view .list-cell {
+    -fx-background-color: transparent;
+}
+
+.combo-box-popup .list-view .list-cell:filled {
+    -fx-background-color: transparent;
+    -fx-text-fill: #FFFFFF;
+}
+ 
+.combo-box-popup .list-view .list-cell:filled:hover {
+    -fx-background-color: #330033;
+    -fx-text-fill: #FFFFFF;
+
+}
+
+.combo-box .cell:selected {
+    -fx-background-color:transparent;
+    -fx-text-fill: #594F4F;
+    -fx-font-size : 13pt;
+}
+
+.radio-button {
+    -fx-opacity: 0.9;
+    -fx-text-fill: #FFFFFF
+}
+
+.date-picker {
+    -fx-background-color: white
+}
+
+.date-picker-popup > .month-year-pane {
+    -fx-background-color: purple;
+
+}
+
+
+.date-picker > .arrow-button > .arrow {
+    -fx-background-color: purple;
+}
+
+.date-picker-popup > * > .spinner > .button {
+    -fx-background-color: transparent;
+}
+
+.date-picker-popup > * > .spinner > .label {
+    -fx-text-fill: white;
+
+}
+
+.button {
+    -fx-background-color:#913D88;
+    -fx-background-radius: 0;
+    -fx-text-fill:#ffffff;
+    -fx-opacity: 0.9;
+    -fx-font-family: "Hiragino Sans W0";
+    -fx-font-size: 13pt;
+
+}
+
+.button:hover{
+    -fx-background-color:#330033;
+    -fx-opacity: 0.8;
+    -fx-text-fill:#ffffff;
+}
+
+.table-view {
+    -fx-base:  #0C090A;
+    -fx-control-inner-background:  #0C090A;
+    -fx-background-color:  #0C090A;
+    -fx-table-cell-border-color: transparent;
+    -fx-table-header-border-color: transparent;
+    -fx-background-radius: 0;
+    -fx-font-family: "Hiragino Sans W0","Arial";
+}
+
+.table-view .column-header-background {
+    -fx-background-color: transparent;
+}
+
+.table-view .column-header, .table-view .filler {
+    -fx-font-family: "Hiragino Sans W0";
+    -fx-size: 12pt;   
+}
+
+.table-view .column-header .label {
+    -fx-font-family: "Hiragino Sans W0","Arial";
+    -fx-font-size: 12pt;
+    -fx-text-fill: #FFFFFF;
+    -fx-alignment: center-left;
+    -fx-opacity: 1;
+}
+
+

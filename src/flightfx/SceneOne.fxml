@@ -3,83 +3,104 @@
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.DatePicker?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.RadioButton?>
+<?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.ColumnConstraints?>
 <?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.layout.StackPane?>
 <?import javafx.scene.text.Font?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/8.0.65" xmlns:fx="http://javafx.com/fxml/1" fx:controller="flightfx.SceneOneController">
-   <top>
-      <Label text="Sök resa" BorderPane.alignment="CENTER_LEFT">
-         <font>
-            <Font size="40.0" />
-         </font>
-         <BorderPane.margin>
-            <Insets bottom="30.0" left="70.0" />
-         </BorderPane.margin>
-      </Label>
-   </top>
-   <center>
-      <GridPane alignment="CENTER" hgap="10.0" prefWidth="533.0" style="-fx-background-color: ;" vgap="10.0" BorderPane.alignment="CENTER">
-        <columnConstraints>
-          <ColumnConstraints hgrow="SOMETIMES" maxWidth="395.0" minWidth="10.0" prefWidth="149.0" />
-          <ColumnConstraints hgrow="SOMETIMES" maxWidth="677.0" minWidth="10.0" prefWidth="401.0" />
-        </columnConstraints>
-        <rowConstraints>
-          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-        </rowConstraints>
-         <children>
-            <Button fx:id="searchButton" mnemonicParsing="false" onAction="#searchButtonAction" prefHeight="50.0" prefWidth="200.0" text="Sök" GridPane.columnIndex="1" GridPane.rowIndex="5">
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="1000.0" stylesheets="@style.css" xmlns="http://javafx.com/javafx/8.0.65" xmlns:fx="http://javafx.com/fxml/1" fx:controller="flightfx.SceneOneController">
+   <children>
+      <StackPane layoutX="300.0" prefHeight="600.0" prefWidth="600.0" style="-fx-background-color: #0C090A; -fx-opacity: 0.7;" AnchorPane.bottomAnchor="0.0" AnchorPane.topAnchor="0.0" />
+      <BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="1000.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+         <center>
+            <GridPane alignment="CENTER" hgap="10.0" prefWidth="533.0" style="-fx-background-color: ;" vgap="10.0" BorderPane.alignment="CENTER">
+              <columnConstraints>
+                <ColumnConstraints hgrow="SOMETIMES" maxWidth="677.0" minWidth="10.0" prefWidth="401.0" />
+              </columnConstraints>
+              <rowConstraints>
+                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+              </rowConstraints>
+               <children>
+                  <Button fx:id="searchButton" alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" onAction="#searchButtonAction" prefHeight="50.0" prefWidth="200.0" text="Sök" GridPane.halignment="CENTER" GridPane.rowIndex="5">
+                     <font>
+                        <Font size="18.0" />
+                     </font>
+                  </Button>
+                  <ComboBox fx:id="toAirportComboBox" prefHeight="40.0" prefWidth="400.0" promptText="Res till" GridPane.halignment="CENTER" GridPane.rowIndex="1" />
+                  <ComboBox fx:id="fromAirportComboBox" prefHeight="40.0" prefWidth="400.0" promptText="Res från" GridPane.halignment="CENTER" />
+                  <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" GridPane.rowIndex="2">
+                     <children>
+                        <DatePicker fx:id="datePicker1" prefHeight="30.0" prefWidth="194.0" promptText="Utresedatum">
+                           <HBox.margin>
+                              <Insets right="10.0" />
+                           </HBox.margin>
+                        </DatePicker>
+                        <DatePicker fx:id="datePicker2" prefHeight="30.0" prefWidth="194.0" promptText="Hemresedatum" />
+                     </children>
+                  </HBox>
+                  <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" GridPane.rowIndex="4">
+                     <children>
+                        <RadioButton fx:id="oneWayRadioButton" mnemonicParsing="false" text="Enkelresa">
+                           <font>
+                              <Font size="16.0" />
+                           </font>
+                           <HBox.margin>
+                              <Insets right="30.0" />
+                           </HBox.margin>
+                        </RadioButton>
+                        <RadioButton fx:id="roundTripRadioButton" mnemonicParsing="false" text="Tur och retur">
+                           <font>
+                              <Font size="16.0" />
+                           </font>
+                        </RadioButton>
+                     </children>
+                  </HBox>
+                  <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" GridPane.halignment="CENTER" GridPane.rowIndex="3" GridPane.valignment="CENTER">
+                     <children>
+                        <ComboBox fx:id="nbrOfPassengersComboBox" prefHeight="40.0" prefWidth="75.0" />
+                        <Label alignment="CENTER" prefHeight="40.0" prefWidth="114.0" text="Passagerare">
+                           <font>
+                              <Font size="16.0" />
+                           </font>
+                           <padding>
+                              <Insets left="20.0" />
+                           </padding>
+                        </Label>
+                     </children>
+                  </HBox>
+               </children>
+               <BorderPane.margin>
+                  <Insets left="70.0" right="70.0" top="30.0" />
+               </BorderPane.margin>
+               <padding>
+                  <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
+               </padding>
+            </GridPane>
+         </center>
+         <left>
+            <Label text="Sök resa" BorderPane.alignment="CENTER">
                <font>
-                  <Font size="18.0" />
+                  <Font size="40.0" />
                </font>
-            </Button>
-            <Label text="Från">
-               <font>
-                  <Font size="18.0" />
-               </font>
+               <BorderPane.margin>
+                  <Insets left="20.0" />
+               </BorderPane.margin>
             </Label>
-            <Label text="Till" GridPane.rowIndex="1">
-               <font>
-                  <Font size="18.0" />
-               </font>
-            </Label>
-            <Label text="Antal resenärer" GridPane.rowIndex="2">
-               <font>
-                  <Font size="16.0" />
-               </font>
-            </Label>
-            <ComboBox fx:id="nbrOfPassengersComboBox" prefHeight="40.0" prefWidth="75.0" GridPane.columnIndex="1" GridPane.rowIndex="2" />
-            <ComboBox prefHeight="40.0" prefWidth="250.0" GridPane.columnIndex="1" GridPane.rowIndex="1" />
-            <ComboBox prefHeight="40.0" prefWidth="250.0" GridPane.columnIndex="1" />
-            <RadioButton fx:id="oneWayRadioButton" mnemonicParsing="false" text="Enkelresa" GridPane.columnIndex="1" GridPane.rowIndex="3">
-               <font>
-                  <Font size="16.0" />
-               </font>
-            </RadioButton>
-            <RadioButton fx:id="roundTripRadioButton" mnemonicParsing="false" text="Tur och retur" GridPane.columnIndex="1" GridPane.rowIndex="4">
-               <font>
-                  <Font size="16.0" />
-               </font>
-            </RadioButton>
-         </children>
-         <BorderPane.margin>
-            <Insets left="70.0" right="70.0" />
-         </BorderPane.margin>
-         <padding>
-            <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
-         </padding>
-      </GridPane>
-   </center>
-   <padding>
-      <Insets bottom="30.0" left="30.0" right="30.0" top="30.0" />
-   </padding>
-</BorderPane>
+         </left>
+      </BorderPane>
+   </children>
+</AnchorPane>

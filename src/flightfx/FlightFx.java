@@ -15,6 +15,8 @@ import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.layout.StackPane;
 import javafx.stage.Stage;
+import javax.ws.rs.client.Client;
+import javax.ws.rs.client.ClientBuilder;
 
 /**
  *
@@ -22,8 +24,14 @@ import javafx.stage.Stage;
  */
 public class FlightFx extends Application {
     
+    public static Client client;
+
+    
     @Override
     public void start(Stage stage) throws IOException {
+        
+        client = ClientBuilder.newClient();    
+
         Parent root = FXMLLoader.load(getClass().getResource("SceneOne.fxml"));
         Scene scene = new Scene(root);
         //scene.getStylesheets().add(getClass().getResource("style.css").toExternalForm());
