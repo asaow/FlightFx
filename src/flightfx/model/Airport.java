@@ -13,42 +13,11 @@ import java.util.Collection;
  * @author Loki
  */
 public class Airport {
+
     private int id;
-    private String city;
-    private String name;
     private String code;
-    
-    public Airport() {
-
-    }
-
-    private Collection<Flight> arrivals = new ArrayList<Flight>();
-
-    private Collection<Flight> departures = new ArrayList<Flight>();
-
-    public Collection<Flight> getArrivals() {
-        return arrivals;
-    }
-
-    public void setArrivals(Collection<Flight> arrivals) {
-        this.arrivals = arrivals;
-    }
-
-    public Collection<Flight> getDepartures() {
-        return departures;
-    }
-
-    public void setDepartures(Collection<Flight> departures) {
-        this.departures = departures;
-    }
-
-    public int getId() {
-        return id;
-    }
-
-    public void setId(int id) {
-        this.id = id;
-    }
+    private String name;
+    private String city;
 
     public String getCity() {
         return city;
@@ -56,14 +25,6 @@ public class Airport {
 
     public void setCity(String city) {
         this.city = city;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
     }
 
     public String getCode() {
@@ -74,10 +35,95 @@ public class Airport {
         this.code = code;
     }
 
+    public Airport() {
+
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
     @Override
     public String toString() {
-        return city + ", " + name + ", " + code;
+        return code + " " + name + " " + city;
     }
-    
-    
+
+    //Den gamla versionen med relation
+//    private int id;
+//    private String city;
+//    private String name;
+//    private String code;
+//    
+//    public Airport() {
+//
+//    }
+//
+//    private Collection<Flight> arrivals = new ArrayList<Flight>();
+//
+//    private Collection<Flight> departures = new ArrayList<Flight>();
+//
+//    public Collection<Flight> getArrivals() {
+//        return arrivals;
+//    }
+//
+//    public void setArrivals(Collection<Flight> arrivals) {
+//        this.arrivals = arrivals;
+//    }
+//
+//    public Collection<Flight> getDepartures() {
+//        return departures;
+//    }
+//
+//    public void setDepartures(Collection<Flight> departures) {
+//        this.departures = departures;
+//    }
+//
+//    public int getId() {
+//        return id;
+//    }
+//
+//    public void setId(int id) {
+//        this.id = id;
+//    }
+//
+//    public String getCity() {
+//        return city;
+//    }
+//
+//    public void setCity(String city) {
+//        this.city = city;
+//    }
+//
+//    public String getName() {
+//        return name;
+//    }
+//
+//    public void setName(String name) {
+//        this.name = name;
+//    }
+//
+//    public String getCode() {
+//        return code;
+//    }
+//
+//    public void setCode(String code) {
+//        this.code = code;
+//    }
+//
+//    @Override
+//    public String toString() {
+//        return city + ", " + name + ", " + code;
+//    }
 }

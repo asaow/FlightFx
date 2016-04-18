@@ -15,7 +15,6 @@
 <?import javafx.scene.layout.StackPane?>
 <?import javafx.scene.text.Font?>
 
-
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="1000.0" stylesheets="@style.css" xmlns="http://javafx.com/javafx/8.0.65" xmlns:fx="http://javafx.com/fxml/1" fx:controller="flightfx.SceneOneController">
    <children>
       <StackPane layoutX="300.0" prefHeight="600.0" prefWidth="600.0" style="-fx-background-color: #0C090A; -fx-opacity: 0.7;" AnchorPane.bottomAnchor="0.0" AnchorPane.topAnchor="0.0" />
@@ -42,7 +41,7 @@
                   </Button>
                   <ComboBox fx:id="toAirportComboBox" prefHeight="40.0" prefWidth="400.0" promptText="Res till" GridPane.halignment="CENTER" GridPane.rowIndex="1" />
                   <ComboBox fx:id="fromAirportComboBox" prefHeight="40.0" prefWidth="400.0" promptText="Res från" GridPane.halignment="CENTER" />
-                  <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" GridPane.rowIndex="2">
+                  <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" GridPane.rowIndex="3">
                      <children>
                         <DatePicker fx:id="datePicker1" prefHeight="30.0" prefWidth="194.0" promptText="Utresedatum">
                            <HBox.margin>
@@ -52,7 +51,7 @@
                         <DatePicker fx:id="datePicker2" prefHeight="30.0" prefWidth="194.0" promptText="Hemresedatum" />
                      </children>
                   </HBox>
-                  <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" GridPane.rowIndex="4">
+                  <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" GridPane.rowIndex="2">
                      <children>
                         <RadioButton fx:id="oneWayRadioButton" mnemonicParsing="false" text="Enkelresa">
                            <font>
@@ -69,9 +68,9 @@
                         </RadioButton>
                      </children>
                   </HBox>
-                  <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" GridPane.halignment="CENTER" GridPane.rowIndex="3" GridPane.valignment="CENTER">
+                  <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" GridPane.halignment="CENTER" GridPane.rowIndex="4" GridPane.valignment="CENTER">
                      <children>
-                        <ComboBox fx:id="nbrOfPassengersComboBox" prefHeight="40.0" prefWidth="75.0" />
+                        <ComboBox fx:id="nbrOfPassengersComboBox" prefHeight="30.0" prefWidth="75.0" />
                         <Label alignment="CENTER" prefHeight="40.0" prefWidth="114.0" text="Passagerare">
                            <font>
                               <Font size="16.0" />
@@ -92,13 +91,13 @@
             </GridPane>
          </center>
          <left>
-            <Label text="Sök resa" BorderPane.alignment="CENTER">
-               <font>
-                  <Font size="40.0" />
-               </font>
+            <Label text="Sök resa" wrapText="true" BorderPane.alignment="CENTER">
                <BorderPane.margin>
                   <Insets left="20.0" />
                </BorderPane.margin>
+               <font>
+                  <Font size="40.0" />
+               </font>
             </Label>
          </left>
       </BorderPane>

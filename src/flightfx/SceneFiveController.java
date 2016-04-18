@@ -37,6 +37,7 @@ public class SceneFiveController implements Initializable {
         Parent root = FXMLLoader.load(getClass().getResource("SceneOne.fxml"));
         Scene scene = new Scene(root);
         Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        scene.getStylesheets().add(getClass().getResource("style.css").toExternalForm());
         stage.setScene(scene);
         stage.show();
     }

@@ -6,6 +6,7 @@
 package flightfx;
 
 import flightfx.model.Airport;
+import flightfx.model.Flight;
 import java.io.IOException;
 import java.net.URL;
 import java.time.LocalDate;
@@ -26,6 +27,7 @@ import javafx.scene.control.DatePicker;
 import javafx.scene.control.RadioButton;
 import javafx.scene.control.ToggleGroup;
 import javafx.stage.Stage;
+import javax.ws.rs.client.Entity;
 import javax.ws.rs.core.GenericType;
 import javax.ws.rs.core.MediaType;
 
@@ -37,19 +39,23 @@ import javax.ws.rs.core.MediaType;
 public class SceneOneController implements Initializable {
 
     ObservableList<String> nbrOfPassengers;
-    ObservableList<Airport> airportList;
+    ObservableList<Airport> fromAirportList;
+    ObservableList<Airport> toAirportList;
+    public static String from;
+    public static String to;
+    public static LocalDate date1;
 
     @FXML
-    private ComboBox fromAirportComboBox;
+    ComboBox<Airport> fromAirportComboBox;
 
     @FXML
-    private ComboBox toAirportComboBox;
+    ComboBox<Airport> toAirportComboBox;
 
     @FXML
     private ComboBox nbrOfPassengersComboBox;
-    
+
     @FXML
-    private DatePicker datePicker1;
+    DatePicker datePicker1;
 
     @FXML
     private DatePicker datePicker2;
@@ -65,11 +71,34 @@ public class SceneOneController implements Initializable {
 
     @FXML
     public void searchButtonAction(ActionEvent event) throws IOException {
+        from = fromAirportComboBox.getSelectionModel().getSelectedItem().toString().substring(0, 3);
+        to = toAirportComboBox.getSelectionModel().getSelectedItem().toString().substring(0, 3);
+        date1 = datePicker1.getValue();
         Parent root = FXMLLoader.load(getClass().getResource("SceneTwo.fxml"));
         Scene scene = new Scene(root);
+
+        SceneTwoController.setFromCombo(from);
+        SceneTwoController.setToCombo(to);
+        SceneTwoController.setDateOneWay(date1);
+
         Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        scene.getStylesheets().add(getClass().getResource("style.css").toExternalForm());
         stage.setScene(scene);
         stage.show();
+
+//        Flight f = new Flight();
+//        f.setFromAirport(from);
+//        f.setToAirport(to);
+//        
+//        Flight flight; 
+//        flight = FlightFx.client.target("http://localhost:8080/FlightServer/webresources/flights")
+//                .request()
+//                .post(Entity.entity(f, MediaType.APPLICATION_JSON),Flight.class);
+//                
+        //test
+//        from = fromAirportComboBox.getSelectionModel().getSelectedItem().toString().substring(0, 3);
+//        to = toAirportComboBox.getSelectionModel().getSelectedItem().toString().substring(0, 3);
+//        System.out.println("from airport "+ from);
     }
 
     /**
@@ -77,8 +106,9 @@ public class SceneOneController implements Initializable {
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        
-        airportList = FXCollections.observableArrayList();
+
+        fromAirportList = FXCollections.observableArrayList();
+        toAirportList = FXCollections.observableArrayList();
 
         //Hämtar alla flygplatser
         GenericType<List<Airport>> airports = new GenericType<List<Airport>>() {
@@ -91,15 +121,16 @@ public class SceneOneController implements Initializable {
         //Loopar igenom listan för att hämta flygplatsens stad, namn och kod
         //Lägger sedan till flygplatsen i ObservableList
         for (Airport a : c) {
-            a.getCity();
-            a.getName();
             a.getCode();
-            
-            airportList.add(a);
+            a.getName();
+            a.getCity();
+
+            fromAirportList.add(a);
+            toAirportList.add(a);
         }
-        
-        fromAirportComboBox.setItems(airportList);
-        toAirportComboBox.setItems(airportList);
+
+        fromAirportComboBox.setItems(fromAirportList);
+        toAirportComboBox.setItems(toAirportList);
 
         nbrOfPassengers = FXCollections.observableArrayList(
                 "1",
@@ -107,25 +138,29 @@ public class SceneOneController implements Initializable {
                 "3",
                 "4",
                 "5",
-                "6",
-                "7",
-                "8",
-                "9",
-                "10"
-        );
+                "6");
 
         nbrOfPassengersComboBox.setItems(nbrOfPassengers);
 
-        //Group för RadioButton
+        //Group för RadioButtons
         ToggleGroup radioGroup = new ToggleGroup();
         oneWayRadioButton.setToggleGroup(radioGroup);
         roundTripRadioButton.setToggleGroup(radioGroup);
 
+        oneWayRadioButton.setOnAction((event) -> {
+            datePicker2.setDisable(true);
+        });
+  
+       roundTripRadioButton.setOnAction((event) -> {
+            datePicker2.setDisable(false);
+        });
+  
         //Test för att printa ut valt datum
         datePicker1.setOnAction(event -> {
-        LocalDate date = datePicker1.getValue();
-        System.out.println("Selected date: " + date);
+            date1 = datePicker1.getValue();
+            System.out.println("Selected date from sceneOne: " + date1);
         });
+
     }
 
 }

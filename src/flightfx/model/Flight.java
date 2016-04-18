@@ -12,19 +12,86 @@ import java.util.Calendar;
  * @author Loki
  */
 public class Flight {
- private int id;
-
-    private Airport fromAirport;
- 
-  
-    private Airport toAirport;
- 
+    private int id;
+    private String fromAirport;
+    private String toAirport;
+    private String fromAirportCode;    
+    private String toAirportCode;
     private Calendar depDate;
     private Calendar arrDate;
     private Calendar depTime;
     private Calendar arrTime;
-    private String duration;
-    private int nbrOfConnections;
+    private String airline;
+    private double price;
+
+    public Calendar getDepDate() {
+        return depDate;
+    }
+
+    public void setDepDate(Calendar depDate) {
+        this.depDate = depDate;
+    }
+
+    public Calendar getArrDate() {
+        return arrDate;
+    }
+
+    public void setArrDate(Calendar arrDate) {
+        this.arrDate = arrDate;
+    }
+
+    public Calendar getDepTime() {
+        return depTime;
+    }
+
+    public void setDepTime(Calendar depTime) {
+        this.depTime = depTime;
+    }
+
+    public Calendar getArrTime() {
+        return arrTime;
+    }
+
+    public void setArrTime(Calendar arrTime) {
+        this.arrTime = arrTime;
+    }
+
+    public String getAirline() {
+        return airline;
+    }
+
+    public void setAirline(String airline) {
+        this.airline = airline;
+    }
+
+    public double getPrice() {
+        return price;
+    }
+
+    public void setPrice(double price) {
+        this.price = price;
+    }
+
+    
+    public String getFromAirportCode() {
+        return fromAirportCode;
+    }
+
+    public void setFromAirportCode(String fromAirportCode) {
+        this.fromAirportCode = fromAirportCode;
+    }
+
+    public String getToAirportCode() {
+        return toAirportCode;
+    }
+
+    public void setToAirportCode(String toAirportCode) {
+        this.toAirportCode = toAirportCode;
+    }
+    
+
+
+//    private int nbrOfConnections;
  
 //    private Collection<Booking> bookings = new ArrayList<Booking>();
 //
@@ -48,68 +115,68 @@ public class Flight {
         this.id = id;
     }
  
-    public Airport getFromAirport() {
+    public String getFromAirport() {
         return fromAirport;
     }
  
-    public void setFromAirport(Airport fromAirport) {
+    public void setFromAirport(String fromAirport) {
         this.fromAirport = fromAirport;
     }
  
-    public Airport getToAirport() {
+    public String getToAirport() {
         return toAirport;
     }
  
-    public void setToAirport(Airport toAirport) {
+    public void setToAirport(String toAirport) {
         this.toAirport = toAirport;
     }
  
-    public Calendar getDepDate() {
-        return depDate;
-    }
- 
-    public void setDepDate(Calendar depDate) {
-        this.depDate = depDate;
-    }
- 
-    public Calendar getArrDate() {
-        return arrDate;
-    }
- 
-    public void setArrDate(Calendar arrDate) {
-        this.arrDate = arrDate;
-    }
- 
-    public Calendar getDepTime() {
-        return depTime;
-    }
- 
-    public void setDepTime(Calendar depTime) {
-        this.depTime = depTime;
-    }
- 
-    public Calendar getArrTime() {
-        return arrTime;
-    }
- 
-    public void setArrTime(Calendar arrTime) {
-        this.arrTime = arrTime;
-    }
- 
-    public String getDuration() {
-        return duration;
-    }
- 
-    public void setDuration(String duration) {
-        this.duration = duration;
-    }
- 
-    public int getNbrOfConnections() {
-        return nbrOfConnections;
-    }
- 
-    public void setNbrOfConnections(int nbrOfConnections) {
-        this.nbrOfConnections = nbrOfConnections;
-    }
+//    public Calendar getDepDate() {
+//        return depDate;
+//    }
+// 
+//    public void setDepDate(Calendar depDate) {
+//        this.depDate = depDate;
+//    }
+// 
+//    public Calendar getArrDate() {
+//        return arrDate;
+//    }
+// 
+//    public void setArrDate(Calendar arrDate) {
+//        this.arrDate = arrDate;
+//    }
+// 
+//    public Calendar getDepTime() {
+//        return depTime;
+//    }
+// 
+//    public void setDepTime(Calendar depTime) {
+//        this.depTime = depTime;
+//    }
+// 
+//    public Calendar getArrTime() {
+//        return arrTime;
+//    }
+// 
+//    public void setArrTime(Calendar arrTime) {
+//        this.arrTime = arrTime;
+//    }
+// 
+//    public String getDuration() {
+//        return duration;
+//    }
+// 
+//    public void setDuration(String duration) {
+//        this.duration = duration;
+//    }
+// 
+//    public int getNbrOfConnections() {
+//        return nbrOfConnections;
+//    }
+// 
+//    public void setNbrOfConnections(int nbrOfConnections) {
+//        this.nbrOfConnections = nbrOfConnections;
+//    }
  
 }

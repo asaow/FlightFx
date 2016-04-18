@@ -15,10 +15,9 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-
 <AnchorPane stylesheets="@style.css" xmlns="http://javafx.com/javafx/8.0.65" xmlns:fx="http://javafx.com/fxml/1" fx:controller="flightfx.SceneTwoController">
    <children>
-      <StackPane layoutY="79.0" prefHeight="521.0" prefWidth="1000.0" style="-fx-background-color: #0C090A; -fx-opacity: 0.7;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="80.0" />
+      <StackPane layoutY="79.0" prefHeight="521.0" prefWidth="1000.0" style="-fx-background-color: #0C090A; -fx-opacity: 0.5;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="80.0" />
       <BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="601.0" prefWidth="1000.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <top>
             <Label text="Sökresultat">
@@ -95,16 +94,15 @@
                         <Insets left="10.0" />
                      </padding>
                   </Label>
-                  <TableView prefHeight="300.0" prefWidth="200.0">
+                  <TableView fx:id="tableView" prefHeight="300.0" prefWidth="200.0">
                     <columns>
-                      <TableColumn text="Avgång" />
-                      <TableColumn prefWidth="250.0" text="Från flygplats" />
-                        <TableColumn text="Ankomst" />
-                        <TableColumn prefWidth="250.0" text="Till flygplats" />
+                      <TableColumn fx:id="depDateColumn" text="Avgång" />
+                      <TableColumn fx:id="fromAirportColumn" prefWidth="250.0" text="Från flygplats" />
+                        <TableColumn fx:id="arrDateColumn" text="Ankomst" />
+                        <TableColumn fx:id="toAirportColumn" prefWidth="250.0" text="Till flygplats" />
                         <TableColumn prefWidth="75.0" text="Restid" />
-                        <TableColumn prefWidth="75.0" text="Byten" />
-                        <TableColumn prefWidth="75.0" text="Flygbolag" />
-                        <TableColumn text="Pris" />
+                        <TableColumn fx:id="airlineColumn" prefWidth="75.0" text="Flygbolag" />
+                        <TableColumn fx:id="priceColumn" text="Pris" />
                     </columns>
                      <VBox.margin>
                         <Insets bottom="30.0" />
@@ -128,7 +126,6 @@
                         <TableColumn text="Ankomst" />
                         <TableColumn prefWidth="250.0" text="Till flygplats" />
                         <TableColumn prefWidth="75.0" text="Restid" />
-                        <TableColumn prefWidth="75.0" text="Byten" />
                         <TableColumn prefWidth="75.0" text="Flygbolag" />
                         <TableColumn text="Pris" />
                     </columns>

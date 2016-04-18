@@ -16,6 +16,7 @@ import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 
 /**
@@ -25,11 +26,20 @@ import javafx.stage.Stage;
  */
 public class SceneThreeController implements Initializable {
     @FXML
+    private TextField firstNameText;
+    @FXML
+    private TextField lastNameText;
+    @FXML
+    private TextField ageText;
+    @FXML
+    private TextField phoneText;
+    @FXML
+    private TextField emailText;
+        
+    @FXML
     private Button backButton;
-    
     @FXML
     private Button cancelButton;
-    
     @FXML
     private Button nextButton;
     
@@ -37,6 +47,7 @@ public class SceneThreeController implements Initializable {
     public void backButtonAction(ActionEvent event) throws IOException {
         Parent root = FXMLLoader.load(getClass().getResource("SceneTwo.fxml"));
         Scene scene = new Scene(root);
+        scene.getStylesheets().add(getClass().getResource("style.css").toExternalForm());
         Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
         stage.setScene(scene);
         stage.show();
@@ -47,6 +58,7 @@ public class SceneThreeController implements Initializable {
         Parent root = FXMLLoader.load(getClass().getResource("SceneOne.fxml"));
         Scene scene = new Scene(root);
         Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        scene.getStylesheets().add(getClass().getResource("style.css").toExternalForm());
         stage.setScene(scene);
         stage.show();
     }
@@ -56,6 +68,7 @@ public class SceneThreeController implements Initializable {
         Parent root = FXMLLoader.load(getClass().getResource("SceneFour.fxml"));
         Scene scene = new Scene(root);
         Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        scene.getStylesheets().add(getClass().getResource("style.css").toExternalForm());
         stage.setScene(scene);
         stage.show();
     }

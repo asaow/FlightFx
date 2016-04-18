@@ -3,35 +3,46 @@
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.StackPane?>
 <?import javafx.scene.text.Font?>
 
-<BorderPane prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/8.0.65" xmlns:fx="http://javafx.com/fxml/1" fx:controller="flightfx.SceneFiveController">
-   <center>
-      <Label text="Tack för din bokning! " BorderPane.alignment="CENTER">
-         <font>
-            <Font size="40.0" />
-         </font>
-      </Label>
-   </center>
-   <bottom>
-      <HBox alignment="TOP_CENTER" prefHeight="230.0" prefWidth="800.0" BorderPane.alignment="CENTER">
-         <children>
-            <Button fx:id="newTripButton" mnemonicParsing="false" onAction="#newTripButtonAction" prefHeight="40.0" prefWidth="150.0" text="Boka ny resa">
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="1000.0" stylesheets="@style.css" xmlns="http://javafx.com/javafx/8.0.65" xmlns:fx="http://javafx.com/fxml/1" fx:controller="flightfx.SceneFiveController">
+   <children>
+      <StackPane layoutY="134.0" prefHeight="331.0" prefWidth="1000.0" style="-fx-background-color: #0C090A; -fx-opacity: 0.5;" AnchorPane.bottomAnchor="135.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="135.0" />
+      <BorderPane prefHeight="600.0" prefWidth="1000.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+         <center>
+            <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="140.0" prefWidth="550.0" text="Tack för din bokning! " wrapText="true" BorderPane.alignment="CENTER">
                <font>
-                  <Font size="16.0" />
+                  <Font size="40.0" />
                </font>
-               <HBox.margin>
-                  <Insets right="20.0" />
-               </HBox.margin>
-            </Button>
-            <Button fx:id="finishButton" mnemonicParsing="false" onAction="#finishButtonAction" prefHeight="40.0" prefWidth="160.0" text="Avsluta">
-               <font>
-                  <Font size="16.0" />
-               </font>
-            </Button>
-         </children>
-      </HBox>
-   </bottom>
-</BorderPane>
+               <BorderPane.margin>
+                  <Insets top="150.0" />
+               </BorderPane.margin>
+            </Label>
+         </center>
+         <bottom>
+            <HBox alignment="TOP_CENTER" prefHeight="230.0" prefWidth="800.0" BorderPane.alignment="CENTER">
+               <children>
+                  <Button fx:id="newTripButton" mnemonicParsing="false" onAction="#newTripButtonAction" prefHeight="40.0" prefWidth="150.0" text="Boka ny resa">
+                     <font>
+                        <Font size="16.0" />
+                     </font>
+                     <HBox.margin>
+                        <Insets right="20.0" />
+                     </HBox.margin>
+                  </Button>
+                  <Button fx:id="finishButton" mnemonicParsing="false" onAction="#finishButtonAction" prefHeight="40.0" prefWidth="160.0" text="Avsluta">
+                     <font>
+                        <Font size="16.0" />
+                     </font>
+                  </Button>
+               </children>
+            </HBox>
+         </bottom>
+      </BorderPane>
+   </children>
+</AnchorPane>
