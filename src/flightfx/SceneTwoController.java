@@ -139,7 +139,7 @@ public class SceneTwoController implements Initializable {
         awayErrorLbl.setVisible(false);
         allCorrect = true;
         Flight selected = (Flight) tableView.getSelectionModel().getSelectedItem();
-        
+
         /*
         FELHANTERING
          */
@@ -181,6 +181,11 @@ public class SceneTwoController implements Initializable {
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
+
+        // Nollställer felmeddelanden
+        awayErrorLbl.setVisible(false);
+        allCorrect = true;
+
         System.out.println(getFromCombo() + " hihih");
         System.out.println(getToCombo() + " hahah");
         flightList = FXCollections.observableArrayList();
