@@ -74,12 +74,12 @@
                      <children>
                         <VBox alignment="CENTER_LEFT" spacing="10.0">
                            <children>
-                              <RadioButton fx:id="economyRadioButton" mnemonicParsing="false" selected="true" text="Ekonomi klass">
+                              <RadioButton fx:id="economyRadioButton" mnemonicParsing="false" selected="true" text="Ekonomiklass">
                                  <font>
                                     <Font size="16.0" />
                                  </font>
                               </RadioButton>
-                              <RadioButton fx:id="businessRadioButton" mnemonicParsing="false" text="Business klass">
+                              <RadioButton fx:id="businessRadioButton" mnemonicParsing="false" text="Businessklass">
                                  <font>
                                     <Font size="16.0" />
                                  </font>

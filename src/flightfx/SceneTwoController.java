@@ -87,6 +87,7 @@ public class SceneTwoController implements Initializable {
 
     @FXML
     private Label awayErrorLbl;
+    private Boolean allCorrect;
 
     //Get selected date fromCode Scene One 
     public static LocalDate getDateOneWay() {
@@ -134,19 +135,28 @@ public class SceneTwoController implements Initializable {
 
     @FXML
     public void nextButtonAction(ActionEvent event) throws IOException {
+        // Nollställer felmeddelanden
+        awayErrorLbl.setVisible(false);
+        allCorrect = true;
         Flight selected = (Flight) tableView.getSelectionModel().getSelectedItem();
-        if (selected==null){
-            
+        
+        /*
+        FELHANTERING
+         */
+        if (selected == null) {
+            awayErrorLbl.setVisible(true);
+            allCorrect = false;
         }
-            
-        flightId = selected.getId();
-        System.out.println(flightId + " id from selected flight in tableview");
-        Parent root = FXMLLoader.load(getClass().getResource("SceneThree.fxml"));
-        Scene scene = new Scene(root);
-        Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-        scene.getStylesheets().add(getClass().getResource("style.css").toExternalForm());
-        stage.setScene(scene);
-        stage.show();
+        if (allCorrect) {
+            flightId = selected.getId();
+            System.out.println(flightId + " id from selected flight in tableview");
+            Parent root = FXMLLoader.load(getClass().getResource("SceneThree.fxml"));
+            Scene scene = new Scene(root);
+            Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+            scene.getStylesheets().add(getClass().getResource("style.css").toExternalForm());
+            stage.setScene(scene);
+            stage.show();
+        }
 
     }
 
