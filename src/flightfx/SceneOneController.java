@@ -27,6 +27,7 @@ import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.DatePicker;
+import javafx.scene.control.Label;
 import javafx.scene.control.RadioButton;
 import javafx.scene.control.ToggleGroup;
 import javafx.stage.Stage;
@@ -37,15 +38,17 @@ import javax.ws.rs.core.MediaType;
 /**
  * FXML Controller class
  *
- * @author Loki
+ * @author Grupp 2
  */
 public class SceneOneController implements Initializable {
 
     ObservableList<String> nbrOfPassengersList;
     ObservableList<Airport> fromAirportList;
     ObservableList<Airport> toAirportList;
-    public static String from;
-    public static String to;
+    public Airport from;
+    public Airport to;
+    public static String fromCode;
+    public static String toCode;
     public static LocalDate date1;
     public static int nbrOfPassengers;
     public static String ticketType;
@@ -74,11 +77,26 @@ public class SceneOneController implements Initializable {
     private RadioButton businessRadioButton;
     @FXML
     private RadioButton firstClassRadioButton;
+    @FXML
+    private Label fromErrorLbl;
+    @FXML
+    private Label toErrorLbl;
+    @FXML
+    private Label sameAirportErrorLbl;
+    @FXML
+    private Label date1ErrorLbl;
+    @FXML
+    private Label date2ErrorLbl;
+    private Boolean allCorrect;
 
     @FXML
     public void searchButtonAction(ActionEvent event) throws IOException {
-        from = fromAirportComboBox.getSelectionModel().getSelectedItem().toString().substring(0, 3);
-        to = toAirportComboBox.getSelectionModel().getSelectedItem().toString().substring(0, 3);
+        // Nollställer felmeddelanden
+        showErrorMessages(false);
+        allCorrect = true;
+        from = fromAirportComboBox.getSelectionModel().getSelectedItem();
+        to = toAirportComboBox.getSelectionModel().getSelectedItem();
+
         date1 = datePicker1.getValue();
         nbrOfPassengers = nbrOfPassengersComboBox.getSelectionModel().getSelectedIndex() + 1;
 
@@ -89,20 +107,54 @@ public class SceneOneController implements Initializable {
         } else {
             ticketType = ECONOMY_TYPE;
         }
+        /*
+        FELHANTERING
+         */
+        if (to == null) {
+            toErrorLbl.setVisible(true);
+            allCorrect = false;
+        }
 
-//        SceneTwoController.setFromCombo(from);
-//        SceneTwoController.setToCombo(to);
-//        SceneTwoController.setDateOneWay(date1);
-        Parent root = FXMLLoader.load(getClass().getResource("SceneTwo.fxml"));
-        Scene scene = new Scene(root);
-        Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-        scene.getStylesheets().add(getClass().getResource("style.css").toExternalForm());
-        stage.setScene(scene);
-        stage.show();
+        if (from == null) {
+            fromErrorLbl.setVisible(true);
+            allCorrect = false;
+        }
+        if (to != null && from != null && to.equals(from)) {
+            sameAirportErrorLbl.setVisible(true);
+            allCorrect = false;
+
+        }
+        if (date1.isBefore(LocalDate.now())) {
+            date1ErrorLbl.setVisible(true);
+            allCorrect = false;
+        }
+
+// FELHANTERING för tur och retur, kan inte väljas än
+//        if (date2.isBefore(LocalDate.now())) {
+//            date1ErrorLbl.setVisible(true);
+//            allCorrect = false;
+//        }
+//        SceneTwoController.setFromCombo(fromCode);
+        //        SceneTwoController.setToCombo(toCode);
+        //        SceneTwoController.setDateOneWay(date1);
+        /*
+        Om inga fel finns, gå till nästa scen
+         */
+        if (allCorrect) {
+            fromCode = fromAirportComboBox.getSelectionModel().getSelectedItem().toString().substring(0, 3);
+            toCode = toAirportComboBox.getSelectionModel().getSelectedItem().toString().substring(0, 3);
+            
+            Parent root = FXMLLoader.load(getClass().getResource("SceneTwo.fxml"));
+            Scene scene = new Scene(root);
+            Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+            scene.getStylesheets().add(getClass().getResource("style.css").toExternalForm());
+            stage.setScene(scene);
+            stage.show();
+        }
 
 //        Flight f = new Flight();
-//        f.setFromAirport(from);
-//        f.setToAirport(to);
+//        f.setFromAirport(fromCode);
+//        f.setToAirport(toCode);
 //        
 //        Flight flight; 
 //        flight = FlightFx.client.target("http://localhost:8080/FlightServer/webresources/flights")
@@ -110,9 +162,18 @@ public class SceneOneController implements Initializable {
 //                .post(Entity.entity(f, MediaType.APPLICATION_JSON),Flight.class);
 //                
         //test
-//        from = fromAirportComboBox.getSelectionModel().getSelectedItem().toString().substring(0, 3);
-//        to = toAirportComboBox.getSelectionModel().getSelectedItem().toString().substring(0, 3);
-//        System.out.println("from airport "+ from);
+//        fromCode = fromAirportComboBox.getSelectionModel().getSelectedItem().toString().substring(0, 3);
+//        toCode = toAirportComboBox.getSelectionModel().getSelectedItem().toString().substring(0, 3);
+//        System.out.println("fromCode airport "+ fromCode);
+    }
+
+    private void showErrorMessages(Boolean b) {
+        fromErrorLbl.setVisible(b);
+        toErrorLbl.setVisible(b);
+        sameAirportErrorLbl.setVisible(b);
+        date1ErrorLbl.setVisible(b);
+        date2ErrorLbl.setVisible(b);
+
     }
 
     /**
@@ -157,16 +218,25 @@ public class SceneOneController implements Initializable {
         nbrOfPassengersComboBox.setItems(nbrOfPassengersList);
         nbrOfPassengersComboBox.setValue(nbrOfPassengersList.get(0));
 
-        //Group för RadioButtons
+        //Group för enkel eller tur och retur RadioButtons
         ToggleGroup radioGroup = new ToggleGroup();
         oneWayRadioButton.setToggleGroup(radioGroup);
         roundTripRadioButton.setToggleGroup(radioGroup);
 
+        //Group för biljettyp RadioButtons
+        ToggleGroup typeGroup = new ToggleGroup();
+        economyRadioButton.setToggleGroup(typeGroup);
+        businessRadioButton.setToggleGroup(typeGroup);
+        firstClassRadioButton.setToggleGroup(typeGroup);
+
+        /*
+        Startvärden
+         */
         datePicker2.setDisable(true);
 
         datePicker1.setValue(LocalDate.now());
         datePicker2.setValue(LocalDate.now());
-        
+
         oneWayRadioButton.setOnAction((event) -> {
             datePicker2.setDisable(true);
         });
@@ -175,10 +245,9 @@ public class SceneOneController implements Initializable {
             datePicker2.setDisable(false);
         });
 
-        ToggleGroup typeGroup = new ToggleGroup();
-        economyRadioButton.setToggleGroup(typeGroup);
-        businessRadioButton.setToggleGroup(typeGroup);
-        firstClassRadioButton.setToggleGroup(typeGroup);
+        // Felmeddelandena dolda från början
+        showErrorMessages(false);
+        allCorrect = true;
 
         //Test för att printa ut valt datum
         datePicker1.setOnAction(event -> {

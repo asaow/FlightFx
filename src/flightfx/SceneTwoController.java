@@ -58,7 +58,7 @@ public class SceneTwoController implements Initializable {
     public static LocalDate dateOneWay;
     public static int flightId;
 
-    //Get selected date from Scene One 
+    //Get selected date fromCode Scene One 
     public static LocalDate getDateOneWay() {
         return SceneOneController.date1;
     }
@@ -67,22 +67,22 @@ public class SceneTwoController implements Initializable {
 //        SceneOneController.date1 = date1;
 //    }
 
-    //Get selected destination from SceneOne ComboBox 
+    //Get selected destination fromCode SceneOne ComboBox 
     public static String getToCombo() {
-        return SceneOneController.to;
+        return SceneOneController.toCode;
     }
 
-//    public static void setToCombo(String to) {
-//        SceneOneController.to = to;
+//    public static void setToCombo(String toCode) {
+//        SceneOneController.toCode = toCode;
 //    }
 
-    //Get selected source from SceneOne ComboBox 
-//    public static void setFromCombo(String from) {
-//        SceneOneController.from = from;
+    //Get selected source fromCode SceneOne ComboBox 
+//    public static void setFromCombo(String fromCode) {
+//        SceneOneController.fromCode = fromCode;
 //    }
 
     public static String getFromCombo() {
-        return SceneOneController.from;
+        return SceneOneController.fromCode;
     }
 
     @FXML
@@ -144,7 +144,7 @@ public class SceneTwoController implements Initializable {
 
     @FXML
     public void showFlights(ActionEvent event) {
-        System.out.println(SceneOneController.from.substring(0, 3));
+        System.out.println(SceneOneController.fromCode.substring(0, 3));
 
     }
 
