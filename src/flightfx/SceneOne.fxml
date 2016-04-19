@@ -13,6 +13,7 @@
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="1000.0" stylesheets="@style.css" xmlns="http://javafx.com/javafx/8.0.65" xmlns:fx="http://javafx.com/fxml/1" fx:controller="flightfx.SceneOneController">
@@ -34,14 +35,14 @@
                   <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
               </rowConstraints>
                <children>
-                  <Button fx:id="searchButton" alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" onAction="#searchButtonAction" prefHeight="50.0" prefWidth="200.0" text="Sök" GridPane.halignment="CENTER" GridPane.rowIndex="5">
+                  <Button fx:id="searchButton" alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" onAction="#searchButtonAction" prefHeight="50.0" prefWidth="200.0" text="Sök" GridPane.halignment="CENTER" GridPane.rowIndex="6">
                      <font>
                         <Font size="18.0" />
                      </font>
                   </Button>
                   <ComboBox fx:id="toAirportComboBox" prefHeight="40.0" prefWidth="400.0" promptText="Res till" GridPane.halignment="CENTER" GridPane.rowIndex="1" />
                   <ComboBox fx:id="fromAirportComboBox" prefHeight="40.0" prefWidth="400.0" promptText="Res från" GridPane.halignment="CENTER" />
-                  <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" GridPane.rowIndex="3">
+                  <HBox alignment="TOP_CENTER" prefHeight="100.0" prefWidth="200.0" GridPane.rowIndex="3">
                      <children>
                         <DatePicker fx:id="datePicker1" prefHeight="30.0" prefWidth="194.0" promptText="Utresedatum">
                            <HBox.margin>
@@ -58,7 +59,7 @@
                               <Font size="16.0" />
                            </font>
                            <HBox.margin>
-                              <Insets right="30.0" />
+                              <Insets right="50.0" />
                            </HBox.margin>
                         </RadioButton>
                         <RadioButton fx:id="roundTripRadioButton" mnemonicParsing="false" text="Tur och retur">
@@ -68,8 +69,30 @@
                         </RadioButton>
                      </children>
                   </HBox>
-                  <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" GridPane.halignment="CENTER" GridPane.rowIndex="4" GridPane.valignment="CENTER">
+                  <HBox alignment="TOP_CENTER" prefHeight="100.0" prefWidth="200.0" GridPane.halignment="CENTER" GridPane.rowIndex="4" GridPane.valignment="CENTER">
                      <children>
+                        <VBox alignment="CENTER_LEFT" spacing="10.0">
+                           <children>
+                              <RadioButton fx:id="economyRadioButton" mnemonicParsing="false" text="Ekonomi klass">
+                                 <font>
+                                    <Font size="16.0" />
+                                 </font>
+                              </RadioButton>
+                              <RadioButton fx:id="businessRadioButton" mnemonicParsing="false" text="Business klass">
+                                 <font>
+                                    <Font size="16.0" />
+                                 </font>
+                              </RadioButton>
+                              <RadioButton fx:id="firstClassRadioButton" mnemonicParsing="false" text="Första klass">
+                                 <font>
+                                    <Font size="16.0" />
+                                 </font>
+                              </RadioButton>
+                           </children>
+                           <HBox.margin>
+                              <Insets right="70.0" />
+                           </HBox.margin>
+                        </VBox>
                         <ComboBox fx:id="nbrOfPassengersComboBox" prefHeight="30.0" prefWidth="75.0" />
                         <Label alignment="CENTER" prefHeight="40.0" prefWidth="114.0" text="Passagerare">
                            <font>

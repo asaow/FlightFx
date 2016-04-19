@@ -58,7 +58,6 @@ public class SceneTwoController implements Initializable {
     public static LocalDate dateOneWay;
     public static int flightId;
 
-
     //Get selected date from Scene One 
     public static LocalDate getDateOneWay() {
         return SceneOneController.date1;
@@ -111,14 +110,13 @@ public class SceneTwoController implements Initializable {
     private Button backButton;
 
     public ObservableList<Flight> flightList;
-    
+
     @FXML
     public void selectFlight(ActionEvent event) throws IOException {
         Flight selected = (Flight) tableView.getSelectionModel().getSelectedItem();
 
     }
-    
-    
+
     @FXML
     public void cancelButtonAction(ActionEvent event) throws IOException {
         Parent root = FXMLLoader.load(getClass().getResource("SceneOne.fxml"));
@@ -252,7 +250,7 @@ public class SceneTwoController implements Initializable {
 //        });
         tableView.setItems(flightList);
         System.out.println("sceneTwo testing date method " + getDateOneWay());
-        
+
         SceneFourController.setFlightId(flightId);
     }
 }

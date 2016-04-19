@@ -5,9 +5,9 @@
  */
 package flightfx;
 
-import static flightfx.SceneTwoController.getDateOneWay;
-import static flightfx.SceneTwoController.getFromCombo;
-import static flightfx.SceneTwoController.getToCombo;
+//import static flightfx.SceneTwoController.getDateOneWay;
+//import static flightfx.SceneTwoController.getFromCombo;
+//import static flightfx.SceneTwoController.getToCombo;
 import flightfx.model.Flight;
 import java.io.IOException;
 import java.net.URL;
@@ -23,11 +23,12 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.control.TextArea;
 import javafx.stage.Stage;
 import javax.ws.rs.core.MediaType;
 
 /**
- * FXML Controller class
+ * Bekräftelse sidan
  *
  * @author Loki
  */
@@ -53,7 +54,8 @@ public class SceneFourController implements Initializable {
     private Label arrDateLabel;
     @FXML
     private Label priceLabel;
-    
+    @FXML
+    private TextArea flightTextArea;
     @FXML
     private Button confirmButton;
     
@@ -104,14 +106,18 @@ public class SceneFourController implements Initializable {
         String depdate = df.format(c.getDepDate().getTime());
         String arrdate = df.format(c.getArrDate().getTime());
 
-        fromAirportLabel.setText("Flygplats: " + c.getFromAirportCode() + " " + c.getFromAirport());
-        depDateLabel.setText("Avgång: " + depdate);
-        toAirportLabel.setText("Flygplats: "+ c.getToAirportCode() + " " + c.getToAirport());
-        arrDateLabel.setText("Ankomst: " + arrdate);
-        
+//        fromAirportLabel.setText("Flygplats: " + c.getFromAirportCode() + " " + c.getFromAirport());
+//        depDateLabel.setText("Avgång: " + depdate);
+//        toAirportLabel.setText("Flygplats: "+ c.getToAirportCode() + " " + c.getToAirport());
+//        arrDateLabel.setText("Ankomst: " + arrdate);
         
         System.out.println("SceneFour flight id: " + getFlightId());
-        
+        flightTextArea.appendText("Avgång: " + depdate + "\n" +
+                "Flygplats: " + c.getFromAirportCode() + " " + c.getFromAirport() + "\n"+ "\n"+
+         
+                "Ankomst: " + arrdate + "\n"+
+                "Flygplats: "+ c.getToAirportCode() + " " + c.getToAirport() + "\n"
+        );
         
     }    
     

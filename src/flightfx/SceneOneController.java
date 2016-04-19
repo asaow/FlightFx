@@ -70,6 +70,13 @@ public class SceneOneController implements Initializable {
     private RadioButton roundTripRadioButton;
 
     @FXML
+    private RadioButton economyRadioButton;
+    @FXML
+    private RadioButton businessRadioButton;
+    @FXML
+    private RadioButton firstClassRadioButton;
+
+    @FXML
     public void searchButtonAction(ActionEvent event) throws IOException {
         from = fromAirportComboBox.getSelectionModel().getSelectedItem().toString().substring(0, 3);
         to = toAirportComboBox.getSelectionModel().getSelectedItem().toString().substring(0, 3);
@@ -150,11 +157,16 @@ public class SceneOneController implements Initializable {
         oneWayRadioButton.setOnAction((event) -> {
             datePicker2.setDisable(true);
         });
-  
-       roundTripRadioButton.setOnAction((event) -> {
+
+        roundTripRadioButton.setOnAction((event) -> {
             datePicker2.setDisable(false);
         });
-  
+
+        ToggleGroup typeGroup = new ToggleGroup();
+        economyRadioButton.setToggleGroup(typeGroup);
+        businessRadioButton.setToggleGroup(typeGroup);
+        firstClassRadioButton.setToggleGroup(typeGroup);
+
         //Test för att printa ut valt datum
         datePicker1.setOnAction(event -> {
             date1 = datePicker1.getValue();

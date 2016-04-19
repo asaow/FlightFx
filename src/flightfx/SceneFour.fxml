@@ -3,6 +3,7 @@
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextArea?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.ColumnConstraints?>
@@ -15,7 +16,7 @@
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="1000.0" stylesheets="@style.css" xmlns="http://javafx.com/javafx/8.0.65" xmlns:fx="http://javafx.com/fxml/1" fx:controller="flightfx.SceneFourController">
    <children>
-      <StackPane layoutX="240.0" prefHeight="600.0" prefWidth="444.0" style="-fx-background-color: #0C090A; -fx-opacity: 0.5;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="240.0" AnchorPane.rightAnchor="316.0" AnchorPane.topAnchor="0.0" />
+      <StackPane layoutX="240.0" prefHeight="600.0" prefWidth="500.0" style="-fx-background-color: #0C090A; -fx-opacity: 0.5;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="220.0" AnchorPane.rightAnchor="280.0" AnchorPane.topAnchor="0.0" />
       <BorderPane prefHeight="600.0" prefWidth="1000.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <opaqueInsets>
             <Insets />
@@ -26,67 +27,25 @@
          <center>
             <VBox alignment="CENTER_LEFT" prefHeight="200.0" prefWidth="592.0" BorderPane.alignment="CENTER">
                <children>
-                  <Label text="Uppgifter om resenär">
-                     <font>
-                        <Font size="16.0" />
-                     </font>
-                  </Label>
-                  <Label prefHeight="17.0" prefWidth="200.0" text="Förnamn:" />
-                  <Label prefWidth="200.0" text="Efternamn: " />
-                  <Label prefWidth="200.0" text="Ålder:" />
-                  <Label prefWidth="200.0" text="Telefonnummer: " />
-                  <Label prefWidth="300.0" text="E-mail: ">
-                     <VBox.margin>
-                        <Insets bottom="10.0" />
-                     </VBox.margin>
-                  </Label>
                   <Label text="Flyginformation">
                      <font>
-                        <Font size="16.0" />
+                        <Font size="22.0" />
                      </font>
                   </Label>
-                  <Label text="Tur &amp; retur">
+                  <TextArea fx:id="flightTextArea" editable="false" prefHeight="250.0" prefWidth="400.0" wrapText="true">
                      <VBox.margin>
-                        <Insets bottom="5.0" />
+                        <Insets bottom="20.0" />
                      </VBox.margin>
-                  </Label>
-                  <Label text="Utresa">
+                  </TextArea>
+                  <Label text="Uppgifter om resenär">
                      <font>
-                        <Font size="15.0" />
+                        <Font size="20.0" />
                      </font>
                   </Label>
-                  <Label fx:id="depDateLabel" text="Avgång: " />
-                  <Label fx:id="fromAirportLabel" text="Flygplats: ">
-                     <VBox.margin>
-                        <Insets bottom="5.0" />
-                     </VBox.margin>
-                  </Label>
-                  <Label fx:id="arrDateLabel" text="Ankomst: " />
-                  <Label fx:id="toAirportLabel" text="Flygplats: ">
-                     <VBox.margin>
-                        <Insets bottom="10.0" />
-                     </VBox.margin>
-                  </Label>
-                  <Label text="Hemresa">
-                     <font>
-                        <Font size="15.0" />
-                     </font>
-                  </Label>
-                  <Label text="Avgång: ">
-                     <VBox.margin>
-                        <Insets />
-                     </VBox.margin>
-                  </Label>
-                  <Label text="Flygplats: ">
-                     <VBox.margin>
-                        <Insets bottom="5.0" />
-                     </VBox.margin>
-                  </Label>
-                  <Label text="Ankomst: " />
-                  <Label text="Flygplats: " />
+                  <TextArea prefHeight="250.0" prefWidth="400.0" />
                </children>
                <BorderPane.margin>
-                  <Insets bottom="20.0" left="100.0" right="300.0" top="20.0" />
+                  <Insets left="70.0" right="280.0" top="20.0" />
                </BorderPane.margin>
             </VBox>
          </center>

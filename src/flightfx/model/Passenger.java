@@ -1,22 +1,35 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package flightfx.model;
 
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+
 /**
- *
- * @author Loki
+ * 
+ * @author Grupp 2
  */
-public class Person {
+
+public class Passenger{
+    
+    @Id @GeneratedValue
     private int id;
     private String firstName;
     private String lastName;
+    private String age;
     private String phone;
     private String email;
     
-    public Person(){
+    
+    private Booking booking;
+
+    public Booking getBooking() {
+        return booking;
+    }
+
+    public void setBooking(Booking booking) {
+        this.booking = booking;
+    }
+    
+    public Passenger(){
         
     }
     
@@ -44,6 +57,14 @@ public class Person {
         this.lastName = lastName;
     }
 
+    public String getAge() {
+        return age;
+    }
+
+    public void setAge(String age) {
+        this.age = age;
+    }
+
     public String getPhone() {
         return phone;
     }
@@ -60,5 +81,12 @@ public class Person {
         this.email = email;
     }
 
+    public String toString(){
+        return "Förnamn: " + firstName + "\n" + 
+                "Efternamn: " + lastName + "\n" + 
+                "Ålder: " + age + "\n" + 
+                "Telefon: " + phone + "\n" + 
+                "Email: " + email;
+    }
     
 }

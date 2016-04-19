@@ -5,8 +5,11 @@
  */
 package flightfx;
 
+import flightfx.model.Passenger;
 import java.io.IOException;
 import java.net.URL;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -20,7 +23,7 @@ import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 
 /**
- * FXML Controller class
+ * Mata in Personuppgifter
  *
  * @author Loki
  */
@@ -42,6 +45,9 @@ public class SceneThreeController implements Initializable {
     private Button cancelButton;
     @FXML
     private Button nextButton;
+    
+    Passenger passenger;
+    public static List<Passenger> passengerList;
     
     @FXML
     public void backButtonAction(ActionEvent event) throws IOException {
@@ -65,6 +71,17 @@ public class SceneThreeController implements Initializable {
     
     @FXML
     public void nextButtonAction(ActionEvent event) throws IOException {
+        passenger = new Passenger();
+        passenger.setFirstName(firstNameText.getText());
+        passenger.setLastName(lastNameText.getText());
+        passenger.setAge(ageText.getText());
+        passenger.setPhone(phoneText.getText());
+        passenger.setEmail(emailText.getText());
+        
+        passengerList.add(passenger);
+        System.out.println(passenger);
+
+        
         Parent root = FXMLLoader.load(getClass().getResource("SceneFour.fxml"));
         Scene scene = new Scene(root);
         Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
@@ -78,7 +95,7 @@ public class SceneThreeController implements Initializable {
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        // TODO
+        passengerList = new ArrayList();
     }    
     
 }

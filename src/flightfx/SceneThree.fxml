@@ -32,7 +32,7 @@
                   <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
               </rowConstraints>
                <children>
-                  <TextField prefHeight="40.0" prefWidth="440.0" promptText="Förnamn">
+                  <TextField fx:id="firstNameText" prefHeight="40.0" prefWidth="440.0" promptText="Förnamn">
                      <font>
                         <Font size="14.0" />
                      </font>
@@ -40,7 +40,7 @@
                         <Insets left="50.0" right="200.0" />
                      </GridPane.margin>
                   </TextField>
-                  <TextField prefHeight="40.0" prefWidth="440.0" promptText="Ålder" GridPane.rowIndex="2">
+                  <TextField fx:id="ageText" prefHeight="40.0" prefWidth="440.0" promptText="Ålder" GridPane.rowIndex="2">
                      <font>
                         <Font size="14.0" />
                      </font>
@@ -48,7 +48,7 @@
                         <Insets left="50.0" right="200.0" />
                      </GridPane.margin>
                   </TextField>
-                  <TextField prefHeight="40.0" prefWidth="440.0" promptText="Telefonnummer" GridPane.rowIndex="3">
+                  <TextField fx:id="phoneText" prefHeight="40.0" prefWidth="440.0" promptText="Telefonnummer" GridPane.rowIndex="3">
                      <font>
                         <Font size="14.0" />
                      </font>
@@ -56,7 +56,7 @@
                         <Insets left="50.0" right="200.0" />
                      </GridPane.margin>
                   </TextField>
-                  <TextField prefHeight="40.0" prefWidth="440.0" promptText="E-mail" GridPane.rowIndex="4">
+                  <TextField fx:id="emailText" prefHeight="40.0" prefWidth="440.0" promptText="E-mail" GridPane.rowIndex="4">
                      <font>
                         <Font size="14.0" />
                      </font>
@@ -64,7 +64,7 @@
                         <Insets left="50.0" right="200.0" />
                      </GridPane.margin>
                   </TextField>
-                  <TextField prefHeight="40.0" prefWidth="440.0" promptText="Efternamn" GridPane.rowIndex="1">
+                  <TextField fx:id="lastNameText" prefHeight="40.0" prefWidth="440.0" promptText="Efternamn" GridPane.rowIndex="1">
                      <GridPane.margin>
                         <Insets left="50.0" right="200.0" />
                      </GridPane.margin>
