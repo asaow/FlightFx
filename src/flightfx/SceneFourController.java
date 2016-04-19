@@ -126,7 +126,7 @@ public class SceneFourController implements Initializable {
                 + "Ankomst: " + arrdate + "\n"
                 + "Flygplats: " + c.getToAirportCode() + " " + c.getToAirport() + "\n"
         );
-        System.out.println(getPassengers().size() + " pass list");
+        System.out.println(getPassengers().size() + " (SceneFour) pass list");
     }
 
 }

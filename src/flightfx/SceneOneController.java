@@ -76,6 +76,8 @@ public class SceneOneController implements Initializable {
         from = fromAirportComboBox.getSelectionModel().getSelectedItem().toString().substring(0, 3);
         to = toAirportComboBox.getSelectionModel().getSelectedItem().toString().substring(0, 3);
         date1 = datePicker1.getValue();
+        nbrOfPassengers= nbrOfPassengersComboBox.getSelectionModel().getSelectedIndex()+1;
+        
         Parent root = FXMLLoader.load(getClass().getResource("SceneTwo.fxml"));
         Scene scene = new Scene(root);
 

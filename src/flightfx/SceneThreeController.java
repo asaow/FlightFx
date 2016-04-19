@@ -50,10 +50,12 @@ public class SceneThreeController implements Initializable {
     Passenger passenger;
     public static List<Passenger> passengerList;
 
+    private int nbrOfPassengers;
+    private int index;
+
     public static int getNbrOfPassengers() {
         return SceneOneController.nbrOfPassengers;
     }
-
 
     @FXML
     public void backButtonAction(ActionEvent event) throws IOException {
@@ -77,22 +79,34 @@ public class SceneThreeController implements Initializable {
 
     @FXML
     public void nextButtonAction(ActionEvent event) throws IOException {
-        passenger = new Passenger();
-        passenger.setFirstName(firstNameText.getText());
-        passenger.setLastName(lastNameText.getText());
-        passenger.setAge(ageText.getText());
-        passenger.setPhone(phoneText.getText());
-        passenger.setEmail(emailText.getText());
 
-        passengerList.add(passenger);
-        System.out.println(passenger);
+            passenger = new Passenger();
+            passenger.setFirstName(firstNameText.getText());
+            passenger.setLastName(lastNameText.getText());
+            passenger.setAge(ageText.getText());
+            passenger.setPhone(phoneText.getText());
+            passenger.setEmail(emailText.getText());
 
-        Parent root = FXMLLoader.load(getClass().getResource("SceneFour.fxml"));
-        Scene scene = new Scene(root);
-        Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-        scene.getStylesheets().add(getClass().getResource("style.css").toExternalForm());
-        stage.setScene(scene);
-        stage.show();
+            passengerList.add(passenger);
+            System.out.println(passenger);
+
+            firstNameText.clear();
+            lastNameText.clear();
+            ageText.clear();
+            phoneText.clear();
+            emailText.clear();
+            
+            index++; // öka index, dvs nästa passagerare
+
+         if (index > nbrOfPassengers) { // om ej fler passagerare, gå till nästa fönster
+            Parent root = FXMLLoader.load(getClass().getResource("SceneFour.fxml"));
+            Scene scene = new Scene(root);
+            Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+            scene.getStylesheets().add(getClass().getResource("style.css").toExternalForm());
+            stage.setScene(scene);
+            stage.show();
+        }
+
     }
 
     /**
@@ -100,7 +114,10 @@ public class SceneThreeController implements Initializable {
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
+        index = 1;
+        nbrOfPassengers = getNbrOfPassengers();
         passengerList = new ArrayList();
+
     }
 
 }
