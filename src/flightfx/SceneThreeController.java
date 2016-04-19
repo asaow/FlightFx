@@ -19,15 +19,22 @@ import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 
 /**
  * Mata in Personuppgifter
  *
- * @author Loki
+ * @author Grupp 2
  */
 public class SceneThreeController implements Initializable {
+
+    private String firstName;
+    private String lastName;
+    private String age;
+    private String phone;
+    private String email;
 
     @FXML
     private TextField firstNameText;
@@ -46,6 +53,9 @@ public class SceneThreeController implements Initializable {
     private Button cancelButton;
     @FXML
     private Button nextButton;
+    @FXML
+    private Label errorLbl;
+    private Boolean allCorrect;
 
     Passenger passenger;
     public static List<Passenger> passengerList;
@@ -79,9 +89,32 @@ public class SceneThreeController implements Initializable {
 
     @FXML
     public void nextButtonAction(ActionEvent event) throws IOException {
+        // Nollställer felmeddelanden
+        errorLbl.setVisible(false);
+        allCorrect = true;
 
+        firstName = firstNameText.getText();
+        lastName = lastNameText.getText();
+        age = ageText.getText();
+        phone = phoneText.getText();
+        email = emailText.getText();
+
+        /*
+        FELHANTERING inmatning
+         */
+        if (firstName == null || lastName == null || age == null || phone == null || email == null
+                || firstName.isEmpty() || lastName.isEmpty() || age.isEmpty() || phone.isEmpty() || email.isEmpty()) {
+            errorLbl.setVisible(true);
+            allCorrect = false;
+        }
+
+        /*
+        Om inga fel finns, skapa passagerarobjekt och gå till nästa passagerare
+         */
+        if (allCorrect) {
             passenger = new Passenger();
-            passenger.setFirstName(firstNameText.getText());
+
+            passenger.setFirstName(firstName);
             passenger.setLastName(lastNameText.getText());
             passenger.setAge(ageText.getText());
             passenger.setPhone(phoneText.getText());
@@ -95,10 +128,11 @@ public class SceneThreeController implements Initializable {
             ageText.clear();
             phoneText.clear();
             emailText.clear();
-            
-            index++; // öka index, dvs nästa passagerare
 
-         if (index > nbrOfPassengers) { // om ej fler passagerare, gå till nästa fönster
+            index++; // öka index, dvs nästa passagerare
+        }
+
+        if (index > nbrOfPassengers) { // om ej fler passagerare, gå till nästa fönster
             Parent root = FXMLLoader.load(getClass().getResource("SceneFour.fxml"));
             Scene scene = new Scene(root);
             Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
@@ -118,6 +152,9 @@ public class SceneThreeController implements Initializable {
         nbrOfPassengers = getNbrOfPassengers();
         passengerList = new ArrayList();
 
+        // Felmeddelande dolt från början
+        errorLbl.setVisible(false);
+        allCorrect = true;
     }
 
 }

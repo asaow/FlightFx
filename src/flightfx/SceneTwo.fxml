@@ -55,6 +55,7 @@
                               <Insets />
                            </HBox.margin>
                         </Button>
+                        <Label fx:id="awayErrorLbl" text="Välj utresa" />
                      </children>
                      <GridPane.margin>
                         <Insets />

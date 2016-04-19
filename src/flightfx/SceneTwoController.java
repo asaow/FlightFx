@@ -33,6 +33,7 @@ import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
 import javafx.scene.control.ListCell;
 import javafx.scene.control.TableCell;
 import javafx.scene.control.TableColumn;
@@ -57,33 +58,6 @@ public class SceneTwoController implements Initializable {
     public static String toCombo;
     public static LocalDate dateOneWay;
     public static int flightId;
-
-    //Get selected date fromCode Scene One 
-    public static LocalDate getDateOneWay() {
-        return SceneOneController.date1;
-    }
-
-//    public static void setDateOneWay(LocalDate date1) {
-//        SceneOneController.date1 = date1;
-//    }
-
-    //Get selected destination fromCode SceneOne ComboBox 
-    public static String getToCombo() {
-        return SceneOneController.toCode;
-    }
-
-//    public static void setToCombo(String toCode) {
-//        SceneOneController.toCode = toCode;
-//    }
-
-    //Get selected source fromCode SceneOne ComboBox 
-//    public static void setFromCombo(String fromCode) {
-//        SceneOneController.fromCode = fromCode;
-//    }
-
-    public static String getFromCombo() {
-        return SceneOneController.fromCode;
-    }
 
     @FXML
     private TableView<Flight> tableView;
@@ -112,6 +86,36 @@ public class SceneTwoController implements Initializable {
     public ObservableList<Flight> flightList;
 
     @FXML
+    private Label awayErrorLbl;
+
+    //Get selected date fromCode Scene One 
+    public static LocalDate getDateOneWay() {
+        return SceneOneController.date1;
+    }
+
+//    public static void setDateOneWay(LocalDate date1) {
+//        SceneOneController.date1 = date1;
+//    }
+    //Get selected destination fromCode SceneOne ComboBox 
+    public static String getToCombo() {
+        return SceneOneController.toCode;
+    }
+
+//    public static void setToCombo(String toCode) {
+//        SceneOneController.toCode = toCode;
+//    }
+    //Get selected source fromCode SceneOne ComboBox 
+//    public static void setFromCombo(String fromCode) {
+//        SceneOneController.fromCode = fromCode;
+//    }
+    public static String getFromCombo() {
+        return SceneOneController.fromCode;
+    }
+
+    /*
+    ANVÄNDS DENNA METODEN???
+     */
+    @FXML
     public void selectFlight(ActionEvent event) throws IOException {
         Flight selected = (Flight) tableView.getSelectionModel().getSelectedItem();
 
@@ -131,6 +135,10 @@ public class SceneTwoController implements Initializable {
     @FXML
     public void nextButtonAction(ActionEvent event) throws IOException {
         Flight selected = (Flight) tableView.getSelectionModel().getSelectedItem();
+        if (selected==null){
+            
+        }
+            
         flightId = selected.getId();
         System.out.println(flightId + " id from selected flight in tableview");
         Parent root = FXMLLoader.load(getClass().getResource("SceneThree.fxml"));

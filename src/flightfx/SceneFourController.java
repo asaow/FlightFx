@@ -30,9 +30,9 @@ import javafx.stage.Stage;
 import javax.ws.rs.core.MediaType;
 
 /**
- * Bekräftelse sidan
+ * Bekräftelsesidan
  *
- * @author Loki
+ * @author Grupp 2
  */
 public class SceneFourController implements Initializable {
 

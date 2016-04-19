@@ -1,15 +1,9 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package flightfx;
 
 import flightfx.model.Airport;
 import static flightfx.model.Booking.BUSINESS_TYPE;
 import static flightfx.model.Booking.ECONOMY_TYPE;
 import static flightfx.model.Booking.FIRST_CLASS_TYPE;
-import flightfx.model.Flight;
 import java.io.IOException;
 import java.net.URL;
 import java.time.LocalDate;
@@ -31,7 +25,6 @@ import javafx.scene.control.Label;
 import javafx.scene.control.RadioButton;
 import javafx.scene.control.ToggleGroup;
 import javafx.stage.Stage;
-import javax.ws.rs.client.Entity;
 import javax.ws.rs.core.GenericType;
 import javax.ws.rs.core.MediaType;
 
@@ -94,6 +87,7 @@ public class SceneOneController implements Initializable {
         // Nollställer felmeddelanden
         showErrorMessages(false);
         allCorrect = true;
+        
         from = fromAirportComboBox.getSelectionModel().getSelectedItem();
         to = toAirportComboBox.getSelectionModel().getSelectedItem();
 
