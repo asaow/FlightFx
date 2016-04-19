@@ -9,10 +9,12 @@ package flightfx;
 //import static flightfx.SceneTwoController.getFromCombo;
 //import static flightfx.SceneTwoController.getToCombo;
 import flightfx.model.Flight;
+import flightfx.model.Passenger;
 import java.io.IOException;
 import java.net.URL;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
+import java.util.List;
 import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -33,7 +35,7 @@ import javax.ws.rs.core.MediaType;
  * @author Loki
  */
 public class SceneFourController implements Initializable {
-    
+
     public static int getFlightId() {
         return SceneTwoController.flightId;
     }
@@ -41,15 +43,20 @@ public class SceneFourController implements Initializable {
     public static void setFlightId(int flightId) {
         SceneTwoController.flightId = flightId;
     }
-    
+
+    public static List<Passenger> getPassengers() {
+        return SceneThreeController.passengerList;
+    }
+
+
     @FXML
     private Button backButton;
     @FXML
     private Label fromAirportLabel;
     @FXML
-    private Label depDateLabel;    
+    private Label depDateLabel;
     @FXML
-    private Label toAirportLabel;    
+    private Label toAirportLabel;
     @FXML
     private Label arrDateLabel;
     @FXML
@@ -58,7 +65,9 @@ public class SceneFourController implements Initializable {
     private TextArea flightTextArea;
     @FXML
     private Button confirmButton;
-    
+    @FXML
+    private TextArea passengerTextArea;
+
     @FXML
     public void backButtonAction(ActionEvent event) throws IOException {
         Parent root = FXMLLoader.load(getClass().getResource("SceneThree.fxml"));
@@ -68,7 +77,7 @@ public class SceneFourController implements Initializable {
         stage.setScene(scene);
         stage.show();
     }
-    
+
     @FXML
     public void cancelButtonAction(ActionEvent event) throws IOException {
         Parent root = FXMLLoader.load(getClass().getResource("SceneOne.fxml"));
@@ -78,8 +87,8 @@ public class SceneFourController implements Initializable {
         stage.setScene(scene);
         stage.show();
     }
-    
-        @FXML
+
+    @FXML
     public void confirmButtonAction(ActionEvent event) throws IOException {
         Parent root = FXMLLoader.load(getClass().getResource("SceneFive.fxml"));
         Scene scene = new Scene(root);
@@ -88,8 +97,7 @@ public class SceneFourController implements Initializable {
         stage.setScene(scene);
         stage.show();
     }
-    
-    
+
     /**
      * Initializes the controller class.
      */
@@ -101,7 +109,9 @@ public class SceneFourController implements Initializable {
                 .path(id)
                 .request(MediaType.APPLICATION_JSON)
                 .get(Flight.class);
+
         System.out.println(c.getAirline());
+
         DateFormat df = new SimpleDateFormat("yyyy-MM-dd");
         String depdate = df.format(c.getDepDate().getTime());
         String arrdate = df.format(c.getArrDate().getTime());
@@ -110,15 +120,13 @@ public class SceneFourController implements Initializable {
 //        depDateLabel.setText("Avgång: " + depdate);
 //        toAirportLabel.setText("Flygplats: "+ c.getToAirportCode() + " " + c.getToAirport());
 //        arrDateLabel.setText("Ankomst: " + arrdate);
-        
         System.out.println("SceneFour flight id: " + getFlightId());
-        flightTextArea.appendText("Avgång: " + depdate + "\n" +
-                "Flygplats: " + c.getFromAirportCode() + " " + c.getFromAirport() + "\n"+ "\n"+
-         
-                "Ankomst: " + arrdate + "\n"+
-                "Flygplats: "+ c.getToAirportCode() + " " + c.getToAirport() + "\n"
+        flightTextArea.appendText("Avgång: " + depdate + "\n"
+                + "Flygplats: " + c.getFromAirportCode() + " " + c.getFromAirport() + "\n" + "\n"
+                + "Ankomst: " + arrdate + "\n"
+                + "Flygplats: " + c.getToAirportCode() + " " + c.getToAirport() + "\n"
         );
-        
-    }    
-    
+        System.out.println(getPassengers().size() + " pass list");
+    }
+
 }

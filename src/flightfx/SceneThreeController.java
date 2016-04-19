@@ -28,6 +28,7 @@ import javafx.stage.Stage;
  * @author Loki
  */
 public class SceneThreeController implements Initializable {
+
     @FXML
     private TextField firstNameText;
     @FXML
@@ -38,17 +39,22 @@ public class SceneThreeController implements Initializable {
     private TextField phoneText;
     @FXML
     private TextField emailText;
-        
+
     @FXML
     private Button backButton;
     @FXML
     private Button cancelButton;
     @FXML
     private Button nextButton;
-    
+
     Passenger passenger;
     public static List<Passenger> passengerList;
-    
+
+    public static int getNbrOfPassengers() {
+        return SceneOneController.nbrOfPassengers;
+    }
+
+
     @FXML
     public void backButtonAction(ActionEvent event) throws IOException {
         Parent root = FXMLLoader.load(getClass().getResource("SceneTwo.fxml"));
@@ -58,7 +64,7 @@ public class SceneThreeController implements Initializable {
         stage.setScene(scene);
         stage.show();
     }
-    
+
     @FXML
     public void cancelButtonAction(ActionEvent event) throws IOException {
         Parent root = FXMLLoader.load(getClass().getResource("SceneOne.fxml"));
@@ -68,7 +74,7 @@ public class SceneThreeController implements Initializable {
         stage.setScene(scene);
         stage.show();
     }
-    
+
     @FXML
     public void nextButtonAction(ActionEvent event) throws IOException {
         passenger = new Passenger();
@@ -77,11 +83,10 @@ public class SceneThreeController implements Initializable {
         passenger.setAge(ageText.getText());
         passenger.setPhone(phoneText.getText());
         passenger.setEmail(emailText.getText());
-        
+
         passengerList.add(passenger);
         System.out.println(passenger);
 
-        
         Parent root = FXMLLoader.load(getClass().getResource("SceneFour.fxml"));
         Scene scene = new Scene(root);
         Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
@@ -89,13 +94,13 @@ public class SceneThreeController implements Initializable {
         stage.setScene(scene);
         stage.show();
     }
-    
+
     /**
      * Initializes the controller class.
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         passengerList = new ArrayList();
-    }    
-    
+    }
+
 }

@@ -38,12 +38,13 @@ import javax.ws.rs.core.MediaType;
  */
 public class SceneOneController implements Initializable {
 
-    ObservableList<String> nbrOfPassengers;
+    ObservableList<String> nbrOfPassengersList;
     ObservableList<Airport> fromAirportList;
     ObservableList<Airport> toAirportList;
     public static String from;
     public static String to;
     public static LocalDate date1;
+    public static int nbrOfPassengers;
 
     @FXML
     ComboBox<Airport> fromAirportComboBox;
@@ -53,22 +54,16 @@ public class SceneOneController implements Initializable {
 
     @FXML
     private ComboBox nbrOfPassengersComboBox;
-
     @FXML
     DatePicker datePicker1;
-
     @FXML
     private DatePicker datePicker2;
-
     @FXML
     private Button searchButton;
-
     @FXML
     private RadioButton oneWayRadioButton;
-
     @FXML
     private RadioButton roundTripRadioButton;
-
     @FXML
     private RadioButton economyRadioButton;
     @FXML
@@ -139,7 +134,7 @@ public class SceneOneController implements Initializable {
         fromAirportComboBox.setItems(fromAirportList);
         toAirportComboBox.setItems(toAirportList);
 
-        nbrOfPassengers = FXCollections.observableArrayList(
+        nbrOfPassengersList = FXCollections.observableArrayList(
                 "1",
                 "2",
                 "3",
@@ -147,7 +142,7 @@ public class SceneOneController implements Initializable {
                 "5",
                 "6");
 
-        nbrOfPassengersComboBox.setItems(nbrOfPassengers);
+        nbrOfPassengersComboBox.setItems(nbrOfPassengersList);
 
         //Group för RadioButtons
         ToggleGroup radioGroup = new ToggleGroup();
