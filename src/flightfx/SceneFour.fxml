@@ -42,7 +42,7 @@
                         <Font size="20.0" />
                      </font>
                   </Label>
-                  <TextArea prefHeight="250.0" prefWidth="400.0" />
+                  <TextArea fx:id="passengerTextArea" prefHeight="250.0" prefWidth="400.0" />
                </children>
                <BorderPane.margin>
                   <Insets left="70.0" right="280.0" top="20.0" />

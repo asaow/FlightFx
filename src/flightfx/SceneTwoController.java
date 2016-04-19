@@ -63,23 +63,23 @@ public class SceneTwoController implements Initializable {
         return SceneOneController.date1;
     }
 
-    public static void setDateOneWay(LocalDate date1) {
-        SceneOneController.date1 = date1;
-    }
+//    public static void setDateOneWay(LocalDate date1) {
+//        SceneOneController.date1 = date1;
+//    }
 
     //Get selected destination from SceneOne ComboBox 
     public static String getToCombo() {
         return SceneOneController.to;
     }
 
-    public static void setToCombo(String to) {
-        SceneOneController.to = to;
-    }
+//    public static void setToCombo(String to) {
+//        SceneOneController.to = to;
+//    }
 
     //Get selected source from SceneOne ComboBox 
-    public static void setFromCombo(String from) {
-        SceneOneController.from = from;
-    }
+//    public static void setFromCombo(String from) {
+//        SceneOneController.from = from;
+//    }
 
     public static String getFromCombo() {
         return SceneOneController.from;

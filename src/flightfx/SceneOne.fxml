@@ -44,17 +44,17 @@
                   <ComboBox fx:id="fromAirportComboBox" prefHeight="40.0" prefWidth="400.0" promptText="Res från" GridPane.halignment="CENTER" />
                   <HBox alignment="TOP_CENTER" prefHeight="100.0" prefWidth="200.0" GridPane.rowIndex="3">
                      <children>
-                        <DatePicker fx:id="datePicker1" prefHeight="30.0" prefWidth="194.0" promptText="Utresedatum">
+                        <DatePicker fx:id="datePicker1" editable="false" prefHeight="30.0" prefWidth="194.0" promptText="Utresedatum">
                            <HBox.margin>
                               <Insets right="10.0" />
                            </HBox.margin>
                         </DatePicker>
-                        <DatePicker fx:id="datePicker2" prefHeight="30.0" prefWidth="194.0" promptText="Hemresedatum" />
+                        <DatePicker fx:id="datePicker2" editable="false" prefHeight="30.0" prefWidth="194.0" promptText="Hemresedatum" />
                      </children>
                   </HBox>
                   <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" GridPane.rowIndex="2">
                      <children>
-                        <RadioButton fx:id="oneWayRadioButton" mnemonicParsing="false" text="Enkelresa">
+                        <RadioButton fx:id="oneWayRadioButton" mnemonicParsing="false" selected="true" text="Enkelresa">
                            <font>
                               <Font size="16.0" />
                            </font>
@@ -73,7 +73,7 @@
                      <children>
                         <VBox alignment="CENTER_LEFT" spacing="10.0">
                            <children>
-                              <RadioButton fx:id="economyRadioButton" mnemonicParsing="false" text="Ekonomi klass">
+                              <RadioButton fx:id="economyRadioButton" mnemonicParsing="false" selected="true" text="Ekonomi klass">
                                  <font>
                                     <Font size="16.0" />
                                  </font>

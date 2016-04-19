@@ -36,19 +36,6 @@ import javax.ws.rs.core.MediaType;
  */
 public class SceneFourController implements Initializable {
 
-    public static int getFlightId() {
-        return SceneTwoController.flightId;
-    }
-
-    public static void setFlightId(int flightId) {
-        SceneTwoController.flightId = flightId;
-    }
-
-    public static List<Passenger> getPassengers() {
-        return SceneThreeController.passengerList;
-    }
-
-
     @FXML
     private Button backButton;
     @FXML
@@ -67,6 +54,24 @@ public class SceneFourController implements Initializable {
     private Button confirmButton;
     @FXML
     private TextArea passengerTextArea;
+
+    private List<Passenger> passList;
+
+    public static int getFlightId() {
+        return SceneTwoController.flightId;
+    }
+
+    public static void setFlightId(int flightId) {
+        SceneTwoController.flightId = flightId;
+    }
+
+    public static List<Passenger> getPassengers() {
+        return SceneThreeController.passengerList;
+    }
+
+    public String getTicketType() {
+        return SceneOneController.ticketType;
+    }
 
     @FXML
     public void backButtonAction(ActionEvent event) throws IOException {
@@ -124,9 +129,15 @@ public class SceneFourController implements Initializable {
         flightTextArea.appendText("Avgång: " + depdate + "\n"
                 + "Flygplats: " + c.getFromAirportCode() + " " + c.getFromAirport() + "\n" + "\n"
                 + "Ankomst: " + arrdate + "\n"
-                + "Flygplats: " + c.getToAirportCode() + " " + c.getToAirport() + "\n"
+                + "Flygplats: " + c.getToAirportCode() + " " + c.getToAirport() + "\n"+ "\n"
         );
-        System.out.println(getPassengers().size() + " (SceneFour) pass list");
+        flightTextArea.appendText("Biljettyp: " + getTicketType());
+
+        passList = getPassengers();
+        for (Passenger p : passList) {
+            passengerTextArea.appendText(p.toString());
+        }
+        System.out.println(passList.size() + " (SceneFour) pass list");
     }
 
 }

@@ -6,6 +6,9 @@
 package flightfx;
 
 import flightfx.model.Airport;
+import static flightfx.model.Booking.BUSINESS_TYPE;
+import static flightfx.model.Booking.ECONOMY_TYPE;
+import static flightfx.model.Booking.FIRST_CLASS_TYPE;
 import flightfx.model.Flight;
 import java.io.IOException;
 import java.net.URL;
@@ -45,6 +48,7 @@ public class SceneOneController implements Initializable {
     public static String to;
     public static LocalDate date1;
     public static int nbrOfPassengers;
+    public static String ticketType;
 
     @FXML
     ComboBox<Airport> fromAirportComboBox;
@@ -76,15 +80,21 @@ public class SceneOneController implements Initializable {
         from = fromAirportComboBox.getSelectionModel().getSelectedItem().toString().substring(0, 3);
         to = toAirportComboBox.getSelectionModel().getSelectedItem().toString().substring(0, 3);
         date1 = datePicker1.getValue();
-        nbrOfPassengers= nbrOfPassengersComboBox.getSelectionModel().getSelectedIndex()+1;
-        
+        nbrOfPassengers = nbrOfPassengersComboBox.getSelectionModel().getSelectedIndex() + 1;
+
+        if (firstClassRadioButton.isSelected()) {
+            ticketType = FIRST_CLASS_TYPE;
+        } else if (businessRadioButton.isSelected()) {
+            ticketType = BUSINESS_TYPE;
+        } else {
+            ticketType = ECONOMY_TYPE;
+        }
+
+//        SceneTwoController.setFromCombo(from);
+//        SceneTwoController.setToCombo(to);
+//        SceneTwoController.setDateOneWay(date1);
         Parent root = FXMLLoader.load(getClass().getResource("SceneTwo.fxml"));
         Scene scene = new Scene(root);
-
-        SceneTwoController.setFromCombo(from);
-        SceneTwoController.setToCombo(to);
-        SceneTwoController.setDateOneWay(date1);
-
         Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
         scene.getStylesheets().add(getClass().getResource("style.css").toExternalForm());
         stage.setScene(scene);
@@ -145,12 +155,18 @@ public class SceneOneController implements Initializable {
                 "6");
 
         nbrOfPassengersComboBox.setItems(nbrOfPassengersList);
+        nbrOfPassengersComboBox.setValue(nbrOfPassengersList.get(0));
 
         //Group för RadioButtons
         ToggleGroup radioGroup = new ToggleGroup();
         oneWayRadioButton.setToggleGroup(radioGroup);
         roundTripRadioButton.setToggleGroup(radioGroup);
 
+        datePicker2.setDisable(true);
+
+        datePicker1.setValue(LocalDate.now());
+        datePicker2.setValue(LocalDate.now());
+        
         oneWayRadioButton.setOnAction((event) -> {
             datePicker2.setDisable(true);
         });
