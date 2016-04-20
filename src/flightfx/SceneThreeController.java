@@ -155,6 +155,7 @@ public class SceneThreeController implements Initializable {
         // Felmeddelande dolt från början
         errorLbl.setVisible(false);
         allCorrect = true;
+        
     }
 
 }

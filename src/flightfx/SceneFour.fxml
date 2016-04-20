@@ -6,17 +6,14 @@
 <?import javafx.scene.control.TextArea?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.BorderPane?>
-<?import javafx.scene.layout.ColumnConstraints?>
-<?import javafx.scene.layout.GridPane?>
 <?import javafx.scene.layout.HBox?>
-<?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.layout.StackPane?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="1000.0" stylesheets="@style.css" xmlns="http://javafx.com/javafx/8.0.65" xmlns:fx="http://javafx.com/fxml/1" fx:controller="flightfx.SceneFourController">
    <children>
-      <StackPane layoutX="240.0" prefHeight="600.0" prefWidth="500.0" style="-fx-background-color: #0C090A; -fx-opacity: 0.5;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="220.0" AnchorPane.rightAnchor="280.0" AnchorPane.topAnchor="0.0" />
+      <StackPane layoutX="240.0" prefHeight="600.0" prefWidth="500.0" style="-fx-background-color: #0C090A; -fx-opacity: 0.9;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="220.0" AnchorPane.rightAnchor="280.0" AnchorPane.topAnchor="0.0" />
       <BorderPane prefHeight="600.0" prefWidth="1000.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <opaqueInsets>
             <Insets />
@@ -25,78 +22,92 @@
             <Insets left="20.0" right="20.0" top="20.0" />
          </padding>
          <center>
-            <VBox alignment="CENTER_LEFT" prefHeight="200.0" prefWidth="592.0" BorderPane.alignment="CENTER">
+            <VBox alignment="CENTER_LEFT" prefHeight="495.0" prefWidth="468.0" BorderPane.alignment="CENTER">
                <children>
                   <Label text="Flyginformation">
                      <font>
                         <Font size="22.0" />
                      </font>
-                  </Label>
-                  <TextArea fx:id="flightTextArea" editable="false" prefHeight="250.0" prefWidth="400.0" wrapText="true">
                      <VBox.margin>
-                        <Insets bottom="20.0" />
+                        <Insets left="5.0" />
                      </VBox.margin>
+                  </Label>
+                  <TextArea fx:id="flightTextArea" editable="false" prefHeight="275.0" prefWidth="499.0" wrapText="true">
+                     <VBox.margin>
+                        <Insets bottom="30.0" />
+                     </VBox.margin>
+                     <padding>
+                        <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+                     </padding>
+                     <font>
+                        <Font size="14.0" />
+                     </font>
                   </TextArea>
                   <Label text="Uppgifter om resenär">
                      <font>
                         <Font size="20.0" />
                      </font>
+                     <VBox.margin>
+                        <Insets bottom="5.0" left="5.0" />
+                     </VBox.margin>
                   </Label>
-                  <TextArea fx:id="passengerTextArea" prefHeight="250.0" prefWidth="400.0" />
+                  <TextArea fx:id="passengerTextArea" editable="false" prefHeight="400.0" prefWidth="400.0" wrapText="true">
+                     <padding>
+                        <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+                     </padding></TextArea>
                </children>
                <BorderPane.margin>
-                  <Insets left="70.0" right="280.0" top="20.0" />
+                  <Insets left="12.0" right="40.0" />
                </BorderPane.margin>
             </VBox>
          </center>
          <left>
-            <Label text="Bekräfta" BorderPane.alignment="CENTER">
-               <font>
-                  <Font size="40.0" />
-               </font>
-               <BorderPane.margin>
-                  <Insets bottom="10.0" />
-               </BorderPane.margin>
-            </Label>
-         </left>
-         <bottom>
-            <GridPane prefWidth="846.0" BorderPane.alignment="CENTER">
-               <columnConstraints>
-                  <ColumnConstraints hgrow="SOMETIMES" maxWidth="638.0" minWidth="10.0" prefWidth="162.0" />
-                  <ColumnConstraints hgrow="SOMETIMES" maxWidth="758.0" minWidth="10.0" prefWidth="758.0" />
-               </columnConstraints>
-               <rowConstraints>
-                  <RowConstraints minHeight="10.0" vgrow="SOMETIMES" />
-               </rowConstraints>
+            <VBox alignment="BOTTOM_LEFT" prefHeight="480.0" prefWidth="189.0" BorderPane.alignment="BOTTOM_LEFT">
                <children>
-                  <HBox alignment="CENTER_RIGHT" prefHeight="100.0" prefWidth="630.0" GridPane.columnIndex="1">
-                     <children>
-                        <Button fx:id="cancelButton" mnemonicParsing="false" onAction="#cancelButtonAction" prefHeight="40.0" prefWidth="100.0" text="Avbryt">
-                           <font>
-                              <Font size="16.0" />
-                           </font>
-                           <HBox.margin>
-                              <Insets right="10.0" />
-                           </HBox.margin>
-                        </Button>
-                        <Button fx:id="confirmButton" mnemonicParsing="false" onAction="#confirmButtonAction" prefHeight="40.0" prefWidth="100.0" text="Bekräfta">
-                           <font>
-                              <Font size="16.0" />
-                           </font>
-                        </Button>
-                     </children>
-                     <GridPane.margin>
-                        <Insets right="10.0" />
-                     </GridPane.margin>
-                  </HBox>
+                  <Label text="Bekräfta">
+                     <font>
+                        <Font size="40.0" />
+                     </font>
+                     <VBox.margin>
+                        <Insets bottom="220.0" top="240.0" />
+                     </VBox.margin>
+                  </Label>
                   <Button fx:id="backButton" alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" onAction="#backButtonAction" prefHeight="40.0" prefWidth="100.0" text="Tillbaka">
+                     <font>
+                        <Font size="16.0" />
+                     </font>
+                     <VBox.margin>
+                        <Insets left="20.0" />
+                     </VBox.margin>
+                  </Button>
+               </children>
+               <BorderPane.margin>
+                  <Insets bottom="20.0" />
+               </BorderPane.margin>
+            </VBox>
+         </left>
+         <right>
+            <HBox alignment="BOTTOM_RIGHT" prefHeight="100.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+               <children>
+                  <Button fx:id="cancelButton" mnemonicParsing="false" onAction="#cancelButtonAction" prefHeight="40.0" prefWidth="100.0" text="Avbryt">
+                     <font>
+                        <Font size="16.0" />
+                     </font>
+                     <HBox.margin>
+                        <Insets right="10.0" />
+                     </HBox.margin>
+                  </Button>
+                  <Button fx:id="confirmButton" mnemonicParsing="false" onAction="#confirmButtonAction" prefHeight="40.0" prefWidth="100.0" text="Bekräfta">
                      <font>
                         <Font size="16.0" />
                      </font>
                   </Button>
                </children>
-            </GridPane>
-         </bottom>
+               <BorderPane.margin>
+                  <Insets bottom="20.0" right="20.0" />
+               </BorderPane.margin>
+            </HBox>
+         </right>
       </BorderPane>
    </children>
 </AnchorPane>

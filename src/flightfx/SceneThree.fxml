@@ -15,10 +15,10 @@
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="1000.0" stylesheets="@style.css" xmlns="http://javafx.com/javafx/8.0.65" xmlns:fx="http://javafx.com/fxml/1" fx:controller="flightfx.SceneThreeController">
    <children>
-      <StackPane layoutX="200.0" prefHeight="600.0" prefWidth="600.0" style="-fx-background-color: #0C090A; -fx-opacity: 0.5;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="200.0" AnchorPane.rightAnchor="200.0" AnchorPane.topAnchor="0.0" />
+      <StackPane layoutX="200.0" prefHeight="600.0" prefWidth="620.0" style="-fx-background-color: #0C090A; -fx-opacity: 0.5;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="200.0" AnchorPane.rightAnchor="180.0" AnchorPane.topAnchor="0.0" />
       <BorderPane prefHeight="600.0" prefWidth="1000.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <center>
-            <GridPane alignment="CENTER" hgap="10.0" prefWidth="838.0" vgap="10.0" BorderPane.alignment="CENTER">
+            <GridPane alignment="CENTER" hgap="10.0" prefWidth="585.0" vgap="10.0" BorderPane.alignment="CENTER">
               <columnConstraints>
                 <ColumnConstraints hgrow="SOMETIMES" maxWidth="640.0" minWidth="10.0" prefWidth="400.0" />
               </columnConstraints>
@@ -37,7 +37,12 @@
                         <Font size="14.0" />
                      </font>
                      <GridPane.margin>
-                        <Insets left="50.0" right="200.0" />
+                        <Insets left="50.0" right="180.0" />
+                     </GridPane.margin>
+                  </TextField>
+                  <TextField fx:id="lastNameText" prefHeight="40.0" prefWidth="440.0" promptText="Efternamn" GridPane.rowIndex="1">
+                     <GridPane.margin>
+                        <Insets left="50.0" right="180.0" />
                      </GridPane.margin>
                   </TextField>
                   <TextField fx:id="ageText" prefHeight="40.0" prefWidth="440.0" promptText="Ålder" GridPane.rowIndex="2">
@@ -45,7 +50,7 @@
                         <Font size="14.0" />
                      </font>
                      <GridPane.margin>
-                        <Insets left="50.0" right="200.0" />
+                        <Insets left="50.0" right="180.0" />
                      </GridPane.margin>
                   </TextField>
                   <TextField fx:id="phoneText" prefHeight="40.0" prefWidth="440.0" promptText="Telefonnummer" GridPane.rowIndex="3">
@@ -53,7 +58,7 @@
                         <Font size="14.0" />
                      </font>
                      <GridPane.margin>
-                        <Insets left="50.0" right="200.0" />
+                        <Insets left="50.0" right="180.0" />
                      </GridPane.margin>
                   </TextField>
                   <TextField fx:id="emailText" prefHeight="40.0" prefWidth="440.0" promptText="E-mail" GridPane.rowIndex="4">
@@ -61,14 +66,16 @@
                         <Font size="14.0" />
                      </font>
                      <GridPane.margin>
-                        <Insets left="50.0" right="200.0" />
+                        <Insets left="50.0" right="180.0" />
                      </GridPane.margin>
                   </TextField>
-                  <TextField fx:id="lastNameText" prefHeight="40.0" prefWidth="440.0" promptText="Efternamn" GridPane.rowIndex="1">
+                  <Label fx:id="errorLbl" alignment="CENTER" prefHeight="54.0" prefWidth="270.0" text="Fyll i samtliga fält" GridPane.rowIndex="5">
                      <GridPane.margin>
-                        <Insets left="50.0" right="200.0" />
+                        <Insets left="120.0" right="150.0" />
                      </GridPane.margin>
-                  </TextField>
+                     <font>
+                        <Font size="26.0" />
+                     </font></Label>
                   <GridPane GridPane.rowIndex="6">
                     <columnConstraints>
                       <ColumnConstraints hgrow="SOMETIMES" maxWidth="310.0" minWidth="10.0" prefWidth="148.0" />
@@ -108,7 +115,6 @@
                         </Button>
                      </children>
                   </GridPane>
-                  <Label fx:id="errorLbl" text="Fyll i samtliga fält" GridPane.rowIndex="5" />
                </children>
                <BorderPane.margin>
                   <Insets bottom="50.0" left="50.0" right="50.0" top="100.0" />

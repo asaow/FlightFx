@@ -85,7 +85,7 @@ public class Passenger {
                 + "Efternamn: " + lastName + "\n"
                 + "Ålder: " + age + "\n"
                 + "Telefon: " + phone + "\n"
-                + "Email: " + email + "\n";
+                + "Email: " + email + "\n"+"\n";
     }
 
 }
