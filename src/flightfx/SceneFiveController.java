@@ -16,6 +16,7 @@ import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
 import javafx.stage.Stage;
 
 /**
@@ -24,14 +25,16 @@ import javafx.stage.Stage;
  * @author Loki
  */
 public class SceneFiveController implements Initializable {
-    
+
     @FXML
     private Button newTripButton;
-    
+
     @FXML
     private Button finishButton;
-    
-    
+
+    @FXML
+    private Label bookingIdLbl;
+
     @FXML
     public void newTripButtonAction(ActionEvent event) throws IOException {
         Parent root = FXMLLoader.load(getClass().getResource("SceneOne.fxml"));
@@ -41,20 +44,21 @@ public class SceneFiveController implements Initializable {
         stage.setScene(scene);
         stage.show();
     }
-    
+
     @FXML
     public void finishButtonAction(ActionEvent event) throws IOException {
         Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
         stage.close();
     }
-    
-    
+
     /**
      * Initializes the controller class.
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        // TODO
-    }    
-    
+
+       
+        bookingIdLbl.setText("Ditt bokningsnummer är: "+ SceneFourController.getBookingId());
+    }
+
 }
