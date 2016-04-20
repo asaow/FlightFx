@@ -55,6 +55,8 @@ public class SceneOneController implements Initializable {
     @FXML
     private ComboBox nbrOfPassengersComboBox;
     @FXML
+    private Button backButton;
+    @FXML
     DatePicker datePicker1;
     @FXML
     private DatePicker datePicker2;
@@ -87,7 +89,7 @@ public class SceneOneController implements Initializable {
         // Nollställer felmeddelanden
         showErrorMessages(false);
         allCorrect = true;
-        
+
         from = fromAirportComboBox.getSelectionModel().getSelectedItem();
         to = toAirportComboBox.getSelectionModel().getSelectedItem();
 
@@ -137,7 +139,7 @@ public class SceneOneController implements Initializable {
         if (allCorrect) {
             fromCode = fromAirportComboBox.getSelectionModel().getSelectedItem().toString().substring(0, 3);
             toCode = toAirportComboBox.getSelectionModel().getSelectedItem().toString().substring(0, 3);
-            
+
             Parent root = FXMLLoader.load(getClass().getResource("SceneTwo.fxml"));
             Scene scene = new Scene(root);
             Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
@@ -168,6 +170,16 @@ public class SceneOneController implements Initializable {
         date1ErrorLbl.setVisible(b);
         date2ErrorLbl.setVisible(b);
 
+    }
+
+    @FXML
+    public void backButtonAction(ActionEvent event) throws IOException {
+        Parent root = FXMLLoader.load(getClass().getResource("StartScene.fxml"));
+        Scene scene = new Scene(root);
+        Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        scene.getStylesheets().add(getClass().getResource("style.css").toExternalForm());
+        stage.setScene(scene);
+        stage.show();
     }
 
     /**

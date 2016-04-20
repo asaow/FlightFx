@@ -6,44 +6,43 @@
 package flightfx;
 
 import java.io.IOException;
-import javafx.application.Application;
+import java.net.URL;
+import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
-import javafx.event.EventHandler;
+import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.fxml.Initializable;
+import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
-import javafx.scene.layout.StackPane;
 import javafx.stage.Stage;
-import javax.ws.rs.client.Client;
-import javax.ws.rs.client.ClientBuilder;
 
 /**
+ * FXML Controller class
  *
  * @author Loki
  */
-public class FlightFx extends Application {
+public class CancelBookingController implements Initializable {
+    @FXML
+    private Button backButton;
     
-    public static Client client;
-
-    
-    @Override
-    public void start(Stage stage) throws IOException {
-        
-        client = ClientBuilder.newClient();    
-
+    @FXML
+    public void backButtonAction(ActionEvent event) throws IOException {
         Parent root = FXMLLoader.load(getClass().getResource("StartScene.fxml"));
         Scene scene = new Scene(root);
+        Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
         scene.getStylesheets().add(getClass().getResource("style.css").toExternalForm());
         stage.setScene(scene);
         stage.show();
     }
 
     /**
-     * @param args the command line arguments
+     * Initializes the controller class.
      */
-    public static void main(String[] args) {
-        launch(args);
-    }
+    @Override
+    public void initialize(URL url, ResourceBundle rb) {
+        // TODO
+    }    
     
 }

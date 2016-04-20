@@ -155,14 +155,22 @@
             </GridPane>
          </center>
          <left>
-            <Label text="Sök resa" wrapText="true" BorderPane.alignment="CENTER">
+            <VBox alignment="CENTER_LEFT" BorderPane.alignment="CENTER">
                <BorderPane.margin>
                   <Insets left="20.0" />
                </BorderPane.margin>
-               <font>
-                  <Font size="40.0" />
-               </font>
-            </Label>
+               <children>
+                  <Label text="Sök resa" wrapText="true">
+                     <font>
+                        <Font size="40.0" />
+                     </font>
+                     <VBox.margin>
+                        <Insets bottom="250.0" top="220.0" />
+                     </VBox.margin>
+                  </Label>
+                  <Button fx:id="backButton" mnemonicParsing="false" onAction="#backButtonAction" prefHeight="50.0" prefWidth="100.0" text="Tillbaka" />
+               </children>
+            </VBox>
          </left>
          <padding>
             <Insets bottom="20.0" />
