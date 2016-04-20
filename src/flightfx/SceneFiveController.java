@@ -37,7 +37,7 @@ public class SceneFiveController implements Initializable {
 
     @FXML
     public void newTripButtonAction(ActionEvent event) throws IOException {
-        Parent root = FXMLLoader.load(getClass().getResource("SceneOne.fxml"));
+        Parent root = FXMLLoader.load(getClass().getResource("StartScene.fxml"));
         Scene scene = new Scene(root);
         Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
         scene.getStylesheets().add(getClass().getResource("style.css").toExternalForm());
