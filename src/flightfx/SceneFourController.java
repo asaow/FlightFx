@@ -8,6 +8,7 @@ package flightfx;
 //import static flightfx.SceneTwoController.getDateOneWay;
 //import static flightfx.SceneTwoController.getFromCombo;
 //import static flightfx.SceneTwoController.getToCombo;
+import flightfx.model.Booking;
 import flightfx.model.Flight;
 import flightfx.model.Passenger;
 import java.io.IOException;
@@ -27,6 +28,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextArea;
 import javafx.stage.Stage;
+import javax.ws.rs.client.Entity;
 import javax.ws.rs.core.MediaType;
 
 /**
@@ -54,6 +56,9 @@ public class SceneFourController implements Initializable {
     private Button confirmButton;
     @FXML
     private TextArea passengerTextArea;
+    
+    Booking booking;
+    Flight c;
 
     private List<Passenger> passList;
 
@@ -65,7 +70,7 @@ public class SceneFourController implements Initializable {
         SceneTwoController.flightId = flightId;
     }
 
-    public static List<Passenger> getPassengers() {
+    public static List<Passenger> getPassengerList() {
         return SceneThreeController.passengerList;
     }
 
@@ -95,6 +100,19 @@ public class SceneFourController implements Initializable {
 
     @FXML
     public void confirmButtonAction(ActionEvent event) throws IOException {
+        
+        booking=new Booking();
+        
+       booking.getPassengers().addAll(passList);
+        //booking.setPassengers(passList);
+        booking.setFlight(c);
+       booking.setType(getTicketType());
+        
+         Booking b;
+        b = FlightFx.client.target("http://localhost:8080/FlightServer/webresources/bookings")
+                .request()
+                .post(Entity.entity(booking, MediaType.APPLICATION_JSON), Booking.class);
+      
         Parent root = FXMLLoader.load(getClass().getResource("SceneFive.fxml"));
         Scene scene = new Scene(root);
         Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
@@ -109,7 +127,6 @@ public class SceneFourController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         String id = String.valueOf(getFlightId());
-        Flight c;
         c = FlightFx.client.target("http://localhost:8080/FlightServer/webresources/flights")
                 .path(id)
                 .request(MediaType.APPLICATION_JSON)
@@ -133,7 +150,7 @@ public class SceneFourController implements Initializable {
         );
         flightTextArea.appendText("Biljettyp: " + getTicketType());
 
-        passList = getPassengers();
+        passList = getPassengerList();
         for (Passenger p : passList) {
             passengerTextArea.appendText(p.toString());
         }
