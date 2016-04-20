@@ -57,10 +57,15 @@ public class SceneFourController implements Initializable {
     @FXML
     private TextArea passengerTextArea;
     
-    Booking booking;
-    Flight c;
+   private Booking booking;
+   private static Booking b;
+   private Flight c;
 
     private List<Passenger> passList;
+    
+     public static int getBookingId() {
+        return b.getId();
+    }
 
     public static int getFlightId() {
         return SceneTwoController.flightId;
@@ -103,15 +108,16 @@ public class SceneFourController implements Initializable {
         
         booking=new Booking();
         
-       booking.getPassengers().addAll(passList);
-        //booking.setPassengers(passList);
+       //booking.getPassengers().addAll(passList);
+        booking.setPassengers(passList);
         booking.setFlight(c);
        booking.setType(getTicketType());
         
-         Booking b;
+        
         b = FlightFx.client.target("http://localhost:8080/FlightServer/webresources/bookings")
                 .request()
                 .post(Entity.entity(booking, MediaType.APPLICATION_JSON), Booking.class);
+        System.out.println("booking_id: "+b.getId());
       
         Parent root = FXMLLoader.load(getClass().getResource("SceneFive.fxml"));
         Scene scene = new Scene(root);
