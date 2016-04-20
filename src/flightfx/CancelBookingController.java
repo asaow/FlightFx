@@ -16,6 +16,8 @@ import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.TextArea;
+import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 
 /**
@@ -26,6 +28,14 @@ import javafx.stage.Stage;
 public class CancelBookingController implements Initializable {
     @FXML
     private Button backButton;
+    @FXML
+    private Button okButton;
+    @FXML
+    private Button cancelButton;
+    @FXML
+    private TextField bookingNrText;
+    @FXML
+    private TextArea bookingInfoTextArea;
     
     @FXML
     public void backButtonAction(ActionEvent event) throws IOException {
@@ -37,6 +47,20 @@ public class CancelBookingController implements Initializable {
         stage.show();
     }
 
+    //Metod för ok knappen 
+    @FXML
+    public void okButtonAction(ActionEvent event) throws IOException {
+  
+    }
+    
+    //Metod för att avboka resa (avboka knappen)
+    @FXML
+    public void cancelButtonAction(ActionEvent event) throws IOException {
+ 
+    }
+    
+    
+    
     /**
      * Initializes the controller class.
      */

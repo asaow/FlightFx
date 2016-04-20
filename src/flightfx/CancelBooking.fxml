@@ -3,6 +3,7 @@
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextArea?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.BorderPane?>
@@ -15,19 +16,39 @@
 
 <AnchorPane id="AnchorPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="1000.0" stylesheets="@style.css" xmlns="http://javafx.com/javafx/8.0.65" xmlns:fx="http://javafx.com/fxml/1" fx:controller="flightfx.CancelBookingController">
    <children>
-      <StackPane layoutX="350.0" prefHeight="600.0" prefWidth="520.0" style="-fx-background-color: #0C090A; -fx-opacity: 0.5;" AnchorPane.leftAnchor="315.0" AnchorPane.rightAnchor="165.0" />
+      <StackPane layoutX="378.0" prefHeight="600.0" prefWidth="457.0" style="-fx-background-color: #0C090A; -fx-opacity: 0.5;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="378.0" AnchorPane.rightAnchor="165.0" />
       <BorderPane prefHeight="800.0" prefWidth="1280.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <left>
             <VBox alignment="CENTER_LEFT" BorderPane.alignment="CENTER">
                <children>
-                  <Label prefHeight="128.0" prefWidth="280.0" text="Mata in bokningsnummer" wrapText="true">
+                  <Label prefHeight="110.0" prefWidth="280.0" text="Mata in bokningsnummer" wrapText="true">
                      <font>
                         <Font size="30.0" />
                      </font>
                      <VBox.margin>
-                        <Insets bottom="170.0" top="200.0" />
+                        <Insets top="120.0" />
                      </VBox.margin>
                   </Label>
+                  <GridPane prefHeight="45.0" prefWidth="280.0">
+                     <VBox.margin>
+                        <Insets bottom="200.0" />
+                     </VBox.margin>
+                     <columnConstraints>
+                        <ColumnConstraints hgrow="SOMETIMES" maxWidth="225.0" minWidth="10.0" prefWidth="220.0" />
+                        <ColumnConstraints hgrow="SOMETIMES" maxWidth="138.0" minWidth="10.0" prefWidth="60.0" />
+                     </columnConstraints>
+                     <rowConstraints>
+                        <RowConstraints minHeight="10.0" vgrow="SOMETIMES" />
+                     </rowConstraints>
+                     <children>
+                        <TextField fx:id="bookingNrText" alignment="TOP_CENTER" prefHeight="45.0" prefWidth="220.0">
+                           <font>
+                              <Font size="24.0" />
+                           </font>
+                        </TextField>
+                        <Button fx:id="okButton" mnemonicParsing="false" onAction="#okButtonAction" prefHeight="45.0" text="OK" GridPane.columnIndex="1" />
+                     </children>
+                  </GridPane>
                   <Button fx:id="backButton" mnemonicParsing="false" onAction="#backButtonAction" prefHeight="40.0" prefWidth="100.0" text="Tillbaka" />
                </children>
             </VBox>
@@ -36,27 +57,23 @@
             <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
          </padding>
          <center>
-            <GridPane alignment="CENTER" prefWidth="323.0" BorderPane.alignment="CENTER">
+            <GridPane alignment="CENTER" prefWidth="323.0" BorderPane.alignment="TOP_LEFT">
                <BorderPane.margin>
-                  <Insets left="80.0" right="100.0" />
+                  <Insets left="100.0" right="70.0" />
                </BorderPane.margin>
                <columnConstraints>
-                  <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" />
+                  <ColumnConstraints hgrow="SOMETIMES" maxWidth="410.0" minWidth="10.0" prefWidth="317.0" />
                </columnConstraints>
                <rowConstraints>
-                  <RowConstraints minHeight="10.0" vgrow="SOMETIMES" />
+                  <RowConstraints maxHeight="468.0" minHeight="10.0" prefHeight="468.0" vgrow="SOMETIMES" />
                </rowConstraints>
                <children>
-                  <TextField alignment="CENTER" prefHeight="80.0" prefWidth="500.0">
-                     <font>
-                        <Font size="30.0" />
-                     </font>
-                  </TextField>
+                  <TextArea fx:id="bookingInfoTextArea" editable="false" prefHeight="200.0" prefWidth="400.0" promptText="bokningsinfo" wrapText="true" />
                </children>
             </GridPane>
          </center>
          <right>
-            <Button mnemonicParsing="false" prefHeight="40.0" prefWidth="100.0" text="Avboka" BorderPane.alignment="BOTTOM_RIGHT">
+            <Button fx:id="cancelButton" mnemonicParsing="false" onAction="#cancelButtonAction" prefHeight="40.0" prefWidth="100.0" text="Avboka" BorderPane.alignment="BOTTOM_RIGHT">
                <BorderPane.margin>
                   <Insets right="10.0" />
                </BorderPane.margin>
