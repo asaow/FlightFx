@@ -21,6 +21,7 @@
          <left>
             <VBox alignment="CENTER_LEFT" BorderPane.alignment="CENTER">
                <children>
+                  <Label fx:id="errorLbl" text="Bokningsnummer måste anges" />
                   <Label prefHeight="110.0" prefWidth="280.0" text="Mata in bokningsnummer" wrapText="true">
                      <font>
                         <Font size="30.0" />
@@ -49,7 +50,7 @@
                         <Button fx:id="okButton" mnemonicParsing="false" onAction="#okButtonAction" prefHeight="45.0" text="OK" GridPane.columnIndex="1" />
                      </children>
                   </GridPane>
-                  <Button fx:id="backButton" mnemonicParsing="false" onAction="#backButtonAction" prefHeight="40.0" prefWidth="100.0" text="Tillbaka" />
+                  <Button fx:id="backButton" mnemonicParsing="false" onAction="#backButtonAction" prefHeight="40.0" prefWidth="100.0" text="Startsida" />
                </children>
             </VBox>
          </left>
@@ -68,7 +69,7 @@
                   <RowConstraints maxHeight="468.0" minHeight="10.0" prefHeight="468.0" vgrow="SOMETIMES" />
                </rowConstraints>
                <children>
-                  <TextArea fx:id="bookingInfoTextArea" editable="false" prefHeight="200.0" prefWidth="400.0" promptText="bokningsinfo" wrapText="true" />
+                  <TextArea fx:id="bookingInfoTextArea" editable="false" prefHeight="200.0" prefWidth="400.0" wrapText="true" />
                </children>
             </GridPane>
          </center>
