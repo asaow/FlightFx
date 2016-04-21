@@ -4,6 +4,8 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 
 /**
+ * Klassen Passenger lagrar information om en passagerare. Innehåller id,
+ * förnamn, efternamn, ålder, telefonnummer och emailadress.
  *
  * @author Grupp 2
  */
@@ -18,20 +20,21 @@ public class Passenger {
     private String phone;
     private String email;
 
+    /*
+    Referens till Booking
+     */
     private Booking booking;
 
-    public Booking getBooking() {
-        return booking;
-    }
-
-    public void setBooking(Booking booking) {
-        this.booking = booking;
-    }
-
+    /*
+    Konstruktor
+     */
     public Passenger() {
 
     }
 
+    /*
+    Getters och setters
+     */
     public int getId() {
         return id;
     }
@@ -80,12 +83,26 @@ public class Passenger {
         this.email = email;
     }
 
+    public Booking getBooking() {
+        return booking;
+    }
+
+    public void setBooking(Booking booking) {
+        this.booking = booking;
+    }
+
+    /**
+     * toString, metoden returnerar information om ett Passenger-objekt.
+     *
+     * @return
+     */
+    @Override
     public String toString() {
         return "Förnamn: " + firstName + "\n"
                 + "Efternamn: " + lastName + "\n"
                 + "Ålder: " + age + "\n"
                 + "Telefon: " + phone + "\n"
-                + "Email: " + email + "\n"+"\n";
+                + "Email: " + email + "\n";
     }
 
 }

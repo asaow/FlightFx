@@ -1,13 +1,5 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package flightfx;
 
-//import static flightfx.SceneTwoController.getDateOneWay;
-//import static flightfx.SceneTwoController.getFromCombo;
-//import static flightfx.SceneTwoController.getToCombo;
 import flightfx.model.Booking;
 import flightfx.model.Flight;
 import flightfx.model.Passenger;
@@ -32,7 +24,8 @@ import javax.ws.rs.client.Entity;
 import javax.ws.rs.core.MediaType;
 
 /**
- * Bekräftelsesidan
+ * SceneFourController är en bekräftelsesida som visar alla valda uppgifter och
+ * skapar en bokning, ett Booking-objekt.
  *
  * @author Grupp 2
  */
@@ -60,9 +53,7 @@ public class SceneFourController implements Initializable {
     private Booking booking;
     private static Booking b;
     private Flight c;
-    private double totalPrice;
     private List<Passenger> passList;
-    private String meal;
 
     public static int getBookingId() {
         return b.getId();
@@ -84,6 +75,13 @@ public class SceneFourController implements Initializable {
         return SceneOneController.ticketType;
     }
 
+    /**
+     * backButtonAction hanterar Tillbaka-knappen, går tillbaka till föregående
+     * scen.
+     *
+     * @param event
+     * @throws IOException
+     */
     @FXML
     public void backButtonAction(ActionEvent event) throws IOException {
         Parent root = FXMLLoader.load(getClass().getResource("SceneThree.fxml"));
@@ -94,9 +92,16 @@ public class SceneFourController implements Initializable {
         stage.show();
     }
 
+    /**
+     * cancelButtonAction hanterar Startsida-knappen, går tillbaka till första
+     * sidan.
+     *
+     * @param event
+     * @throws IOException
+     */
     @FXML
     public void cancelButtonAction(ActionEvent event) throws IOException {
-        Parent root = FXMLLoader.load(getClass().getResource("SceneOne.fxml"));
+        Parent root = FXMLLoader.load(getClass().getResource("StartScene.fxml"));
         Scene scene = new Scene(root);
         Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
         scene.getStylesheets().add(getClass().getResource("style.css").toExternalForm());
@@ -104,12 +109,18 @@ public class SceneFourController implements Initializable {
         stage.show();
     }
 
+    /**
+     * confirmButtonAction hanterar Bekräfta-knappen, skapar en bokning och går
+     * till nästa scen.
+     *
+     * @param event
+     * @throws IOException
+     */
     @FXML
     public void confirmButtonAction(ActionEvent event) throws IOException {
 
         booking = new Booking();
 
-        //booking.getPassengers().addAll(passList);
         booking.setPassengers(passList);
         booking.setFlight(c);
         booking.setType(getTicketType());
@@ -117,7 +128,6 @@ public class SceneFourController implements Initializable {
         b = FlightFx.client.target("http://localhost:8080/FlightServer/webresources/bookings")
                 .request()
                 .post(Entity.entity(booking, MediaType.APPLICATION_JSON), Booking.class);
-        System.out.println("booking_id: " + b.getId());
 
         Parent root = FXMLLoader.load(getClass().getResource("SceneFive.fxml"));
         Scene scene = new Scene(root);
@@ -128,7 +138,39 @@ public class SceneFourController implements Initializable {
     }
 
     /**
-     * Initializes the controller class.
+     * getTotalPriceAndMeal, metod som returnerar en String med information om
+     * respektive biljettyp.
+     *
+     * @param ticketType
+     * @param flight
+     * @param passList
+     * @return String med information om respektive biljettyp
+     */
+    public static String getTotalPriceAndMeal(String ticketType, Flight flight, List<Passenger> passList) {
+        double totalPrice;
+        String meal;
+        String s;
+        switch (ticketType) {
+            case "BUSINESSKLASS":
+                totalPrice = flight.getPrice() * passList.size() * 1.7;
+                meal = "Lättare måltid ingår";
+                break;
+            case "FÖRSTA KLASS":
+                totalPrice = flight.getPrice() * passList.size() * 2;
+                meal = "3-rätters måltid ingår";
+                break;
+            default:
+                totalPrice = flight.getPrice() * passList.size();
+                meal = "";
+                break;
+        }
+        s = meal + "\n" + "\n" + "Totalpris: " + totalPrice + " SEK" + "\n";
+        return s;
+    }
+
+    /**
+     * Initializes the controller class. Hämtar bokningsuppgifter och visar dem
+     * i TextArea.
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
@@ -138,44 +180,25 @@ public class SceneFourController implements Initializable {
                 .request(MediaType.APPLICATION_JSON)
                 .get(Flight.class);
 
-        System.out.println(c.getAirline());
-
         DateFormat df = new SimpleDateFormat("yyyy-MM-dd");
         String depdate = df.format(c.getDepDate().getTime());
         String arrdate = df.format(c.getArrDate().getTime());
 
-        System.out.println("SceneFour flight id: " + getFlightId());
         flightTextArea.appendText("Avgång: " + depdate + "  Kl: " + c.getDepTime() + "\n"
                 + "Flygplats: " + c.getFromAirportCode() + " " + c.getFromAirport() + "\n" + "\n"
                 + "Ankomst: " + arrdate + "  Kl: " + c.getArrTime() + "\n"
                 + "Flygplats: " + c.getToAirportCode() + " " + c.getToAirport() + "\n" + "\n"
-                + "Restid: " + c.getDuration() + ",  " + " Byten: " + c.getNbrOfConnections()+ "\n"
-
+                + "Restid: " + c.getDuration() + ",  " + " Byten: " + c.getNbrOfConnections() + "\n"
         );
+
         flightTextArea.appendText("Biljettyp: " + getTicketType() + "\n");
 
         passList = getPassengerList();
         for (Passenger p : passList) {
             passengerTextArea.appendText(p.toString());
         }
-        System.out.println(passList.size() + " (SceneFour) pass list");
-        
-        switch (getTicketType()) {
-            case "BUSINESSKLASS":
-                totalPrice = c.getPrice() * passList.size() * 1.7;
-                meal = "Lättare måltid ingår";
-                break;
-            case "FÖRSTA KLASS":
-                totalPrice = c.getPrice() * passList.size() * 2;
-                meal = "Tre rätters ingår";
-                break;
-            default:
-                totalPrice = c.getPrice() * passList.size();
-                meal = "";
-                break;
-        }
 
-        flightTextArea.appendText("Totalpris: " + totalPrice + " SEK" + "\n" + meal);
+        flightTextArea.appendText(getTotalPriceAndMeal(getTicketType(), c, passList));
 
     }
 

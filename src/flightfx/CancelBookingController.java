@@ -1,6 +1,5 @@
 package flightfx;
 
-import static flightfx.SceneFourController.getPassengerList;
 import flightfx.model.Booking;
 import flightfx.model.Passenger;
 import java.io.IOException;
@@ -21,12 +20,12 @@ import javafx.scene.control.Label;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
-import javax.ws.rs.core.GenericType;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 
 /**
- * FXML Controller class
+ * CancelBookingController är FXML Controller class för CancelBooking.fxml
+ * Hanterar avbokning av bokningar.
  *
  * @author Grupp 2
  */
@@ -51,6 +50,13 @@ public class CancelBookingController implements Initializable {
     private Boolean allCorrect;
     String bookingNrStr;
 
+    /**
+     * backButtonAction hanterar Startsida-knappen, går tillbaka till första
+     * sidan.
+     *
+     * @param event
+     * @throws IOException
+     */
     @FXML
     public void backButtonAction(ActionEvent event) throws IOException {
         Parent root = FXMLLoader.load(getClass().getResource("StartScene.fxml"));
@@ -61,7 +67,12 @@ public class CancelBookingController implements Initializable {
         stage.show();
     }
 
-    //Metod för ok knappen 
+    /**
+     * Metod för OK-knappen, hämtar inmatad bokning och visar i TextArea.
+     *
+     * @param event
+     * @throws IOException
+     */
     @FXML
     public void okButtonAction(ActionEvent event) throws IOException {
 
@@ -102,17 +113,22 @@ public class CancelBookingController implements Initializable {
                 String depdate = df.format(b.getFlight().getDepDate().getTime());
                 String arrdate = df.format(b.getFlight().getArrDate().getTime());
 
-                bookingInfoTextArea.appendText("Bokningsnummer: " + bookingNrStr + "\n" + "Avgång: " + depdate + "\n"
+                bookingInfoTextArea.appendText("Bokningsnummer: " + bookingNrStr + "\n"
+                        + "Avgång: " + depdate + "  Kl: " + b.getFlight().getDepTime() + "\n"
                         + "Flygplats: " + b.getFlight().getFromAirportCode() + " " + b.getFlight().getFromAirport() + "\n" + "\n"
-                        + "Ankomst: " + arrdate + "\n"
+                        + "Ankomst: " + arrdate + "  Kl: " + b.getFlight().getArrTime() + "\n"
                         + "Flygplats: " + b.getFlight().getToAirportCode() + " " + b.getFlight().getToAirport() + "\n" + "\n"
+                        + "Restid: " + b.getFlight().getDuration() + ",  " + " Byten: " + b.getFlight().getNbrOfConnections() + "\n"
+                        + "Biljettyp: " + b.getType() + "\n"
                 );
-                bookingInfoTextArea.appendText("Biljettyp: " + b.getType() + "\n" + "==========================================");
 
                 passList = (List<Passenger>) b.getPassengers();
 
+                bookingInfoTextArea.appendText(SceneFourController.getTotalPriceAndMeal(b.getType(), b.getFlight(), passList));
+                bookingInfoTextArea.appendText("==========================================");
+
                 for (Passenger p : passList) {
-                    bookingInfoTextArea.appendText("\n" + "\n" + "\n" + p.toString());
+                    bookingInfoTextArea.appendText("\n" + "\n" + p.toString());
                 }
                 bookingNrText.clear();
 
@@ -120,7 +136,12 @@ public class CancelBookingController implements Initializable {
         }
     }
 
-    //Metod för att avboka resa (avboka knappen)
+    /**
+     * Metod för Avboka-knappen, raderar vald bokning från databasen.
+     *
+     * @param event
+     * @throws IOException
+     */
     @FXML
     public void cancelButtonAction(ActionEvent event) throws IOException {
 
