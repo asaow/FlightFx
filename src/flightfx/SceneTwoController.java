@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package flightfx;
 
 import flightfx.model.Flight;
@@ -89,42 +84,49 @@ public class SceneTwoController implements Initializable {
     private Label awayErrorLbl;
     private Boolean allCorrect;
 
-    //Get selected date fromCode Scene One 
+    /**
+     * Returnerar valt avresedatum från SceneOne
+     *
+     * @return SceneOneController.date1
+     */
     public static LocalDate getDateOneWay() {
         return SceneOneController.date1;
     }
 
-//    public static void setDateOneWay(LocalDate date1) {
-//        SceneOneController.date1 = date1;
-//    }
-    //Get selected destination fromCode SceneOne ComboBox 
+    /**
+     * Returnerar vald destination från SceneOne
+     *
+     * @return SceneOneController.toCode
+     */
     public static String getToCombo() {
         return SceneOneController.toCode;
     }
 
-//    public static void setToCombo(String toCode) {
-//        SceneOneController.toCode = toCode;
-//    }
-    //Get selected source fromCode SceneOne ComboBox 
-//    public static void setFromCombo(String fromCode) {
-//        SceneOneController.fromCode = fromCode;
-//    }
+    /**
+     * Returnerar vald avreseort från SceneOne
+     *
+     * @return SceneOneController.fromCode
+     */
     public static String getFromCombo() {
         return SceneOneController.fromCode;
     }
 
-    /*
-    ANVÄNDS DENNA METODEN???
-     */
     @FXML
     public void selectFlight(ActionEvent event) throws IOException {
         Flight selected = (Flight) tableView.getSelectionModel().getSelectedItem();
 
     }
 
+    /**
+     * cancelButtonAction hanterar Startsida-knappen, går tillbaka till första
+     * sidan.
+     *
+     * @param event
+     * @throws IOException
+     */
     @FXML
     public void cancelButtonAction(ActionEvent event) throws IOException {
-        Parent root = FXMLLoader.load(getClass().getResource("SceneOne.fxml"));
+        Parent root = FXMLLoader.load(getClass().getResource("StartScene.fxml"));
         Scene scene = new Scene(root);
         Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
         scene.getStylesheets().add(getClass().getResource("style.css").toExternalForm());
@@ -133,6 +135,12 @@ public class SceneTwoController implements Initializable {
 
     }
 
+    /**
+     * nextButtonAction sparar vald flygresa och går till nästa scen.
+     *
+     * @param event
+     * @throws IOException
+     */
     @FXML
     public void nextButtonAction(ActionEvent event) throws IOException {
         // Nollställer felmeddelanden
@@ -149,7 +157,6 @@ public class SceneTwoController implements Initializable {
         }
         if (allCorrect) {
             flightId = selected.getId();
-            System.out.println(flightId + " id from selected flight in tableview");
             Parent root = FXMLLoader.load(getClass().getResource("SceneThree.fxml"));
             Scene scene = new Scene(root);
             Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
@@ -160,6 +167,13 @@ public class SceneTwoController implements Initializable {
 
     }
 
+    /**
+     * backButtonAction hanterar Tillbaka-knappen, går tillbaka till föregående
+     * scen.
+     *
+     * @param event
+     * @throws IOException
+     */
     @FXML
     public void backButtonAction(ActionEvent event) throws IOException {
         Parent root = FXMLLoader.load(getClass().getResource("SceneOne.fxml"));
@@ -171,7 +185,8 @@ public class SceneTwoController implements Initializable {
     }
 
     /**
-     * Initializes the controller class.
+     * Initializes the controller class. Hämtar flygresor enligt gjorda val och
+     * visar i tabellen.
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
@@ -180,8 +195,6 @@ public class SceneTwoController implements Initializable {
         awayErrorLbl.setVisible(false);
         allCorrect = true;
 
-        System.out.println(getFromCombo() + " hihih");
-        System.out.println(getToCombo() + " hahah");
         flightList = FXCollections.observableArrayList();
 
         GenericType<List<Flight>> gt = new GenericType<List<Flight>>() {
@@ -191,7 +204,6 @@ public class SceneTwoController implements Initializable {
                 .path(getFromCombo() + "/" + getToCombo() + "/" + getDateOneWay())
                 .request(MediaType.APPLICATION_JSON)
                 .get(gt);
-        System.out.println(c);
 
         for (Flight f : c) {
             f.getFromAirportCode();
@@ -211,8 +223,6 @@ public class SceneTwoController implements Initializable {
 
             DateFormat df = new SimpleDateFormat("yyyy-MM-dd");
             String date = df.format(f.getDepDate().getTime());
-            //System.out.println(df.format(f.getDepDate().getTime()));
-            System.out.println(date);
 
         }
 
@@ -237,6 +247,7 @@ public class SceneTwoController implements Initializable {
         nbrOfConnectionsColumn.setCellFactory(TextFieldTableCell.forTableColumn(new IntegerStringConverter()));
 
         DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
+
         depDateColumn.setCellFactory(col -> new TableCell<Flight, Calendar>() {
             @Override
             public void updateItem(Calendar item, boolean empty) {
@@ -261,24 +272,7 @@ public class SceneTwoController implements Initializable {
             }
         });
 
-//        fromAirportColumn.setCellValueFactory(new Callback<CellDataFeatures<Flight, String>, ObservableValue<String>>() {
-//            public ObservableValue<String> call(CellDataFeatures<Flight, String> f) {
-//                // f.getValue() returns the Flight instance for a particular TableView row
-//                return new ReadOnlyObjectWrapper(f.getValue().getFromAirportCode());
-//
-//            }
-//
-//        });
-//        toAirportColumn.setCellValueFactory(new Callback<CellDataFeatures<Flight, String>, ObservableValue<String>>() {
-//            public ObservableValue<String> call(CellDataFeatures<Flight, String> f) {
-//                // f.getValue() returns the Person instance for a particular TableView row
-//                return new ReadOnlyObjectWrapper(f.getValue().getToAirportCode());
-//
-//            }
-//
-//        });
         tableView.setItems(flightList);
-        System.out.println("sceneTwo testing date method " + getDateOneWay());
         flightLabel.setText(getFromCombo() + " - " + getToCombo() + "   " + getDateOneWay());
         SceneFourController.setFlightId(flightId);
     }
