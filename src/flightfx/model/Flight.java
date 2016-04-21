@@ -19,10 +19,12 @@ public class Flight {
     private String toAirportCode;
     private Calendar depDate;
     private Calendar arrDate;
-    private Calendar depTime;
-    private Calendar arrTime;
+    private String depTime;
+    private String arrTime;
     private String airline;
+    private String duration;
     private double price;
+    private int nbrOfConnections;
 
     public Calendar getDepDate() {
         return depDate;
@@ -40,19 +42,19 @@ public class Flight {
         this.arrDate = arrDate;
     }
 
-    public Calendar getDepTime() {
+    public String getDepTime() {
         return depTime;
     }
 
-    public void setDepTime(Calendar depTime) {
+    public void setDepTime(String depTime) {
         this.depTime = depTime;
     }
 
-    public Calendar getArrTime() {
+    public String getArrTime() {
         return arrTime;
     }
 
-    public void setArrTime(Calendar arrTime) {
+    public void setArrTime(String arrTime) {
         this.arrTime = arrTime;
     }
 
@@ -89,20 +91,23 @@ public class Flight {
         this.toAirportCode = toAirportCode;
     }
     
+    public String getDuration() {
+        return duration;
+    }
+ 
+    public void setDuration(String duration) {
+        this.duration = duration;
+    }
+ 
+    public int getNbrOfConnections() {
+        return nbrOfConnections;
+    }
+ 
+    public void setNbrOfConnections(int nbrOfConnections) {
+        this.nbrOfConnections = nbrOfConnections;
+    }
 
 
-//    private int nbrOfConnections;
- 
-//    private Collection<Booking> bookings = new ArrayList<Booking>();
-//
-//    public Collection<Booking> getBookings() {
-//        return bookings;
-//    }
-//
-//    public void setBookings(Collection<Booking> bookings) {
-//        this.bookings = bookings;
-//    }
- 
     public Flight() {
  
     }
@@ -130,6 +135,16 @@ public class Flight {
     public void setToAirport(String toAirport) {
         this.toAirport = toAirport;
     }
+
+//    private Collection<Booking> bookings = new ArrayList<Booking>();
+//
+//    public Collection<Booking> getBookings() {
+//        return bookings;
+//    }
+//
+//    public void setBookings(Collection<Booking> bookings) {
+//        this.bookings = bookings;
+//    }
  
 //    public Calendar getDepDate() {
 //        return depDate;
@@ -162,21 +177,7 @@ public class Flight {
 //    public void setArrTime(Calendar arrTime) {
 //        this.arrTime = arrTime;
 //    }
-// 
-//    public String getDuration() {
-//        return duration;
-//    }
-// 
-//    public void setDuration(String duration) {
-//        this.duration = duration;
-//    }
-// 
-//    public int getNbrOfConnections() {
-//        return nbrOfConnections;
-//    }
-// 
-//    public void setNbrOfConnections(int nbrOfConnections) {
-//        this.nbrOfConnections = nbrOfConnections;
-//    }
+ 
+
  
 }
