@@ -72,8 +72,7 @@ public class CancelBookingController implements Initializable {
 
         // Avboka-knappen ej synlig
         cancelButton.setVisible(false);
-        //cancelButton.setDisable(true);
-        
+
         bookingNrStr = bookingNrText.getText();
 
         // Om bokningsnummer ej är inmatat, visa felmeddelande
@@ -98,7 +97,7 @@ public class CancelBookingController implements Initializable {
 
                 // Avboka-knappen synlig
                 cancelButton.setVisible(true);
-                //cancelButton.setDisable(false);
+
                 DateFormat df = new SimpleDateFormat("yyyy-MM-dd");
                 String depdate = df.format(b.getFlight().getDepDate().getTime());
                 String arrdate = df.format(b.getFlight().getArrDate().getTime());
@@ -136,7 +135,6 @@ public class CancelBookingController implements Initializable {
 
         // Avboka-knappen ej synlig
         cancelButton.setVisible(false);
-        //cancelButton.setDisable(true);
     }
 
     /**
@@ -151,7 +149,6 @@ public class CancelBookingController implements Initializable {
 
         // Avboka-knappen ej synlig från start
         cancelButton.setVisible(false);
-        //cancelButton.setDisable(true);
     }
 
 }
