@@ -4,8 +4,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 
 /**
- * Klassen Passenger lagrar information om en passagerare. Innehåller id,
- * förnamn, efternamn, ålder, telefonnummer och emailadress.
+ * Klassen Passenger lagrar information om en passagerare.
  *
  * @author Grupp 2
  */
@@ -20,9 +19,6 @@ public class Passenger {
     private String phone;
     private String email;
 
-    /*
-    Referens till Booking
-     */
     private Booking booking;
 
     /*

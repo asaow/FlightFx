@@ -1,16 +1,12 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package flightfx.model;
 
 import java.util.ArrayList;
 import java.util.Collection;
 
 /**
+ * Klassen Booking lagrar information om en bokning.
  *
- * @author Loki
+ * @author Grupp 2
  */
 public class Booking {
 
@@ -23,6 +19,17 @@ public class Booking {
     public static final String BUSINESS_TYPE = "BUSINESSKLASS";
     public static final String ECONOMY_TYPE = "EKONOMIKLASS";
 
+    /*
+    Konstruktor
+     */
+    public Booking() {
+        this.passengers = new ArrayList<>();
+
+    }
+
+    /*
+    Getters och setters
+     */
     public String getType() {
         return type;
     }
@@ -49,11 +56,6 @@ public class Booking {
 
     public void setPassengers(Collection<Passenger> passengers) {
         this.passengers = passengers;
-    }
-
-    public Booking() {
-        this.passengers = new ArrayList<>();
-
     }
 
     public int getId() {
