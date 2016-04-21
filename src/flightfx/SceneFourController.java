@@ -62,6 +62,7 @@ public class SceneFourController implements Initializable {
     private Flight c;
     private double totalPrice;
     private List<Passenger> passList;
+    private String meal;
 
     public static int getBookingId() {
         return b.getId();
@@ -164,16 +165,19 @@ public class SceneFourController implements Initializable {
         switch (getTicketType()) {
             case "BUSINESSKLASS":
                 totalPrice = c.getPrice() * passList.size() * 1.7;
+                meal = "Lättare måltid ingår";
                 break;
             case "FÖRSTA KLASS":
                 totalPrice = c.getPrice() * passList.size() * 2;
+                meal = "Tre rätters ingår";
                 break;
             default:
                 totalPrice = c.getPrice() * passList.size();
+                meal = "";
                 break;
         }
 
-        flightTextArea.appendText("Totalpris: " + totalPrice + " SEK");
+        flightTextArea.appendText("Totalpris: " + totalPrice + " SEK" + "\n" + meal);
 
     }
 
