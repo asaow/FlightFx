@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package flightfx;
 
 import flightfx.model.Passenger;
@@ -24,7 +19,8 @@ import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 
 /**
- * Mata in Personuppgifter
+ * SceneThreeController är controller för SceneThree, där inmatning av
+ * passageraruppgifter sker, och Passenger-objekt skapas.
  *
  * @author Grupp 2
  */
@@ -67,6 +63,13 @@ public class SceneThreeController implements Initializable {
         return SceneOneController.nbrOfPassengers;
     }
 
+    /**
+     * backButtonAction hanterar Tillbaka-knappen, går tillbaka till föregående
+     * scen.
+     *
+     * @param event
+     * @throws IOException
+     */
     @FXML
     public void backButtonAction(ActionEvent event) throws IOException {
         Parent root = FXMLLoader.load(getClass().getResource("SceneTwo.fxml"));
@@ -77,9 +80,16 @@ public class SceneThreeController implements Initializable {
         stage.show();
     }
 
+    /**
+     * cancelButtonAction hanterar Startsida-knappen, går tillbaka till första
+     * sidan.
+     *
+     * @param event
+     * @throws IOException
+     */
     @FXML
     public void cancelButtonAction(ActionEvent event) throws IOException {
-        Parent root = FXMLLoader.load(getClass().getResource("SceneOne.fxml"));
+        Parent root = FXMLLoader.load(getClass().getResource("StartScene.fxml"));
         Scene scene = new Scene(root);
         Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
         scene.getStylesheets().add(getClass().getResource("style.css").toExternalForm());
@@ -87,6 +97,15 @@ public class SceneThreeController implements Initializable {
         stage.show();
     }
 
+    /**
+     * nextButtonAction hanterar Nästa-knappen, och hanterar inmatning av
+     * passageraruppgifter, och skapar Passenger-objekt. Går sedan vidare till
+     * inmatning av nästa passagerare, eller till nästa scen, om inga fler
+     * passagerare finns.
+     *
+     * @param event
+     * @throws IOException
+     */
     @FXML
     public void nextButtonAction(ActionEvent event) throws IOException {
         // Nollställer felmeddelanden
@@ -121,7 +140,6 @@ public class SceneThreeController implements Initializable {
             passenger.setEmail(emailText.getText());
 
             passengerList.add(passenger);
-            System.out.println(passenger);
 
             firstNameText.clear();
             lastNameText.clear();
@@ -155,7 +173,7 @@ public class SceneThreeController implements Initializable {
         // Felmeddelande dolt från början
         errorLbl.setVisible(false);
         allCorrect = true;
-        
+
     }
 
 }
