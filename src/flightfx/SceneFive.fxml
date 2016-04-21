@@ -20,7 +20,7 @@
                   <Insets top="150.0" />
                </BorderPane.margin>
                <children>
-                  <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="140.0" prefWidth="550.0" text="Tack för din bokning! " wrapText="true">
+                  <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="83.0" prefWidth="550.0" text="Tack för din bokning! " wrapText="true">
                      <font>
                         <Font size="40.0" />
                      </font>

@@ -44,6 +44,7 @@ import javafx.scene.control.cell.TextFieldTableCell;
 import javafx.stage.Stage;
 import javafx.util.Callback;
 import javafx.util.converter.DoubleStringConverter;
+import javafx.util.converter.IntegerStringConverter;
 import javax.ws.rs.core.GenericType;
 import javax.ws.rs.core.MediaType;
 
@@ -73,7 +74,17 @@ public class SceneTwoController implements Initializable {
     private TableColumn<Flight, Double> priceColumn;
     @FXML
     private TableColumn<Flight, String> airlineColumn;
+    @FXML
+    private TableColumn<Flight, String> depTimeColumn;
+    @FXML
+    private TableColumn<Flight, String> arrTimeColumn;
+    @FXML
+    private TableColumn<Flight, String> durationColumn;
+    @FXML
+    private TableColumn<Flight, Integer> nbrOfConnectionsColumn;
 
+    @FXML
+    private Label flightLabel;
     @FXML
     private Button cancelButton;
 
@@ -160,11 +171,6 @@ public class SceneTwoController implements Initializable {
 
     }
 
-    @FXML
-    public void showFlights(ActionEvent event) {
-        System.out.println(SceneOneController.fromCode.substring(0, 3));
-
-    }
 
     @FXML
     public void backButtonAction(ActionEvent event) throws IOException {
@@ -208,6 +214,10 @@ public class SceneTwoController implements Initializable {
             f.getPrice();
             f.getDepDate();
             f.getArrDate();
+            f.getArrTime();
+            f.getDepTime();
+            f.getDuration();
+            f.getNbrOfConnections();
 
             flightList.add(f);
 
@@ -224,11 +234,20 @@ public class SceneTwoController implements Initializable {
         priceColumn.setCellValueFactory(new PropertyValueFactory<Flight, Double>("price"));
         depDateColumn.setCellValueFactory(new PropertyValueFactory<Flight, Calendar>("depDate"));
         arrDateColumn.setCellValueFactory(new PropertyValueFactory<Flight, Calendar>("arrDate"));
+        arrTimeColumn.setCellValueFactory(new PropertyValueFactory<Flight, String>("arrTime"));
+        depTimeColumn.setCellValueFactory(new PropertyValueFactory<Flight, String>("depTime"));
+        durationColumn.setCellValueFactory(new PropertyValueFactory<Flight, String>("duration"));
+        nbrOfConnectionsColumn.setCellValueFactory(new PropertyValueFactory<Flight, Integer>("nbrOfConnections"));
+       
 
         priceColumn.setCellFactory(TextFieldTableCell.forTableColumn(new DoubleStringConverter()));
         airlineColumn.setCellFactory(TextFieldTableCell.forTableColumn());
         fromAirportColumn.setCellFactory(TextFieldTableCell.forTableColumn());
         toAirportColumn.setCellFactory(TextFieldTableCell.forTableColumn());
+        arrTimeColumn.setCellFactory(TextFieldTableCell.forTableColumn());
+        depTimeColumn.setCellFactory(TextFieldTableCell.forTableColumn());
+        durationColumn.setCellFactory(TextFieldTableCell.forTableColumn());
+        nbrOfConnectionsColumn.setCellFactory(TextFieldTableCell.forTableColumn(new IntegerStringConverter()));
 
         DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
         depDateColumn.setCellFactory(col -> new TableCell<Flight, Calendar>() {
@@ -273,7 +292,7 @@ public class SceneTwoController implements Initializable {
 //        });
         tableView.setItems(flightList);
         System.out.println("sceneTwo testing date method " + getDateOneWay());
-
+        flightLabel.setText(getFromCombo() + " - " + getToCombo() + "   " + getDateOneWay());
         SceneFourController.setFlightId(flightId);
     }
 }

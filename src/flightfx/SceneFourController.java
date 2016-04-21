@@ -56,14 +56,14 @@ public class SceneFourController implements Initializable {
     private Button confirmButton;
     @FXML
     private TextArea passengerTextArea;
-    
-   private Booking booking;
-   private static Booking b;
-   private Flight c;
 
+    private Booking booking;
+    private static Booking b;
+    private Flight c;
+    private double totalPrice;
     private List<Passenger> passList;
-    
-     public static int getBookingId() {
+
+    public static int getBookingId() {
         return b.getId();
     }
 
@@ -105,20 +105,19 @@ public class SceneFourController implements Initializable {
 
     @FXML
     public void confirmButtonAction(ActionEvent event) throws IOException {
-        
-        booking=new Booking();
-        
-       //booking.getPassengers().addAll(passList);
+
+        booking = new Booking();
+
+        //booking.getPassengers().addAll(passList);
         booking.setPassengers(passList);
         booking.setFlight(c);
-       booking.setType(getTicketType());
-        
-        
+        booking.setType(getTicketType());
+
         b = FlightFx.client.target("http://localhost:8080/FlightServer/webresources/bookings")
                 .request()
                 .post(Entity.entity(booking, MediaType.APPLICATION_JSON), Booking.class);
-        System.out.println("booking_id: "+b.getId());
-      
+        System.out.println("booking_id: " + b.getId());
+
         Parent root = FXMLLoader.load(getClass().getResource("SceneFive.fxml"));
         Scene scene = new Scene(root);
         Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
@@ -149,18 +148,33 @@ public class SceneFourController implements Initializable {
 //        toAirportLabel.setText("Flygplats: "+ c.getToAirportCode() + " " + c.getToAirport());
 //        arrDateLabel.setText("Ankomst: " + arrdate);
         System.out.println("SceneFour flight id: " + getFlightId());
-        flightTextArea.appendText("Avgång: " + depdate + "\n"
+        flightTextArea.appendText("Avgång: " + depdate + "  Kl: " + c.getDepTime() + "\n"
                 + "Flygplats: " + c.getFromAirportCode() + " " + c.getFromAirport() + "\n" + "\n"
-                + "Ankomst: " + arrdate + "\n"
-                + "Flygplats: " + c.getToAirportCode() + " " + c.getToAirport() + "\n"+ "\n"
+                + "Ankomst: " + arrdate + "  Kl: " + c.getArrTime() + "\n"
+                + "Flygplats: " + c.getToAirportCode() + " " + c.getToAirport() + "\n" + "\n"
         );
-        flightTextArea.appendText("Biljettyp: " + getTicketType());
+        flightTextArea.appendText("Biljettyp: " + getTicketType() + "\n");
 
         passList = getPassengerList();
         for (Passenger p : passList) {
             passengerTextArea.appendText(p.toString());
         }
         System.out.println(passList.size() + " (SceneFour) pass list");
+        
+        switch (getTicketType()) {
+            case "BUSINESSKLASS":
+                totalPrice = c.getPrice() * passList.size() * 1.7;
+                break;
+            case "FÖRSTA KLASS":
+                totalPrice = c.getPrice() * passList.size() * 2;
+                break;
+            default:
+                totalPrice = c.getPrice() * passList.size();
+                break;
+        }
+
+        flightTextArea.appendText("Totalpris: " + totalPrice + " SEK");
+
     }
 
 }
