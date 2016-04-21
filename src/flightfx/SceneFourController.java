@@ -144,15 +144,13 @@ public class SceneFourController implements Initializable {
         String depdate = df.format(c.getDepDate().getTime());
         String arrdate = df.format(c.getArrDate().getTime());
 
-//        fromAirportLabel.setText("Flygplats: " + c.getFromAirportCode() + " " + c.getFromAirport());
-//        depDateLabel.setText("Avgång: " + depdate);
-//        toAirportLabel.setText("Flygplats: "+ c.getToAirportCode() + " " + c.getToAirport());
-//        arrDateLabel.setText("Ankomst: " + arrdate);
         System.out.println("SceneFour flight id: " + getFlightId());
         flightTextArea.appendText("Avgång: " + depdate + "  Kl: " + c.getDepTime() + "\n"
                 + "Flygplats: " + c.getFromAirportCode() + " " + c.getFromAirport() + "\n" + "\n"
                 + "Ankomst: " + arrdate + "  Kl: " + c.getArrTime() + "\n"
                 + "Flygplats: " + c.getToAirportCode() + " " + c.getToAirport() + "\n" + "\n"
+                + "Restid: " + c.getDuration() + ",  " + " Byten: " + c.getNbrOfConnections()+ "\n"
+
         );
         flightTextArea.appendText("Biljettyp: " + getTicketType() + "\n");
 
