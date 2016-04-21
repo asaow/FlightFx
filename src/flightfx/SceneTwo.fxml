@@ -78,7 +78,7 @@
                         </Button>
                      </children>
                   </HBox>
-                  <Label fx:id="awayErrorLbl" alignment="CENTER" prefHeight="54.0" prefWidth="307.0" text="Välj utresa" GridPane.columnIndex="1" GridPane.halignment="CENTER">
+                  <Label fx:id="awayErrorLbl" alignment="CENTER" prefHeight="67.0" prefWidth="307.0" style="-fx-background-color: #c0392b;" text="Välj utresa" GridPane.columnIndex="1" GridPane.halignment="CENTER">
                      <font>
                         <Font size="36.0" />
                      </font>
@@ -92,52 +92,33 @@
          <center>
             <VBox prefHeight="400.0" prefWidth="760.0" BorderPane.alignment="CENTER">
                <children>
-                  <Label text="Utresa">
+                  <Label fx:id="flightLabel" prefHeight="29.0" prefWidth="601.0">
                      <font>
                         <Font size="24.0" />
                      </font>
                      <padding>
                         <Insets left="10.0" />
                      </padding>
+                     <VBox.margin>
+                        <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+                     </VBox.margin>
                   </Label>
-                  <TableView fx:id="tableView" prefHeight="300.0" prefWidth="200.0">
+                  <TableView fx:id="tableView" prefHeight="334.0" prefWidth="1000.0">
                     <columns>
-                      <TableColumn fx:id="depDateColumn" text="Avgång" />
-                      <TableColumn fx:id="fromAirportColumn" prefWidth="250.0" text="Från flygplats" />
-                        <TableColumn fx:id="arrDateColumn" text="Ankomst" />
-                        <TableColumn fx:id="toAirportColumn" prefWidth="250.0" text="Till flygplats" />
-                        <TableColumn prefWidth="75.0" text="Restid" />
-                        <TableColumn fx:id="airlineColumn" prefWidth="75.0" text="Flygbolag" />
-                        <TableColumn fx:id="priceColumn" text="Pris" />
+                      <TableColumn fx:id="depDateColumn" editable="false" prefWidth="90.0" text="Avgång" />
+                        <TableColumn fx:id="depTimeColumn" editable="false" prefWidth="65.0" text="Tid" />
+                      <TableColumn fx:id="fromAirportColumn" editable="false" prefWidth="180.0" text="Från flygplats" />
+                        <TableColumn fx:id="arrDateColumn" editable="false" prefWidth="90.0" text="Ankomst" />
+                        <TableColumn fx:id="arrTimeColumn" editable="false" prefWidth="65.0" text="Tid" />
+                        <TableColumn fx:id="toAirportColumn" editable="false" prefWidth="180.0" text="Till flygplats" />
+                        <TableColumn fx:id="durationColumn" editable="false" prefWidth="75.0" text="Restid" />
+                        <TableColumn fx:id="nbrOfConnectionsColumn" editable="false" prefWidth="60.0" text="Byten" />
+                        <TableColumn fx:id="airlineColumn" editable="false" prefWidth="125.0" text="Flygbolag" />
+                        <TableColumn fx:id="priceColumn" editable="false" prefWidth="70.0" text="Pris" />
                     </columns>
                      <VBox.margin>
                         <Insets bottom="30.0" />
                      </VBox.margin>
-                     <columnResizePolicy>
-                        <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
-                     </columnResizePolicy>
-                  </TableView>
-                  <Label text="Hemresa">
-                     <font>
-                        <Font size="24.0" />
-                     </font>
-                     <padding>
-                        <Insets left="10.0" />
-                     </padding>
-                  </Label>
-                  <TableView prefHeight="300.0" prefWidth="200.0">
-                    <columns>
-                      <TableColumn text="Avgång" />
-                      <TableColumn prefWidth="250.0" text="Från flygplats" />
-                        <TableColumn text="Ankomst" />
-                        <TableColumn prefWidth="250.0" text="Till flygplats" />
-                        <TableColumn prefWidth="75.0" text="Restid" />
-                        <TableColumn prefWidth="75.0" text="Flygbolag" />
-                        <TableColumn text="Pris" />
-                    </columns>
-                     <columnResizePolicy>
-                        <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
-                     </columnResizePolicy>
                   </TableView>
                </children>
             </VBox>

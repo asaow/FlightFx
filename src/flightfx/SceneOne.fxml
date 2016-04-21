@@ -47,13 +47,13 @@
                      <children>
                         <VBox alignment="CENTER" prefHeight="44.0" prefWidth="216.0">
                            <children>
-                              <Label fx:id="date1ErrorLbl" prefHeight="17.0" prefWidth="192.0" text="Välj korrekt utresedatum" />
+                              <Label fx:id="date1ErrorLbl" prefHeight="17.0" prefWidth="192.0" style="-fx-background-color: #c0392b;" text="Välj korrekt utresedatum" />
                               <DatePicker fx:id="datePicker1" editable="false" prefHeight="27.0" prefWidth="190.0" promptText="Utresedatum" />
                            </children>
                         </VBox>
                         <VBox alignment="CENTER" prefHeight="44.0" prefWidth="210.0">
                            <children>
-                              <Label fx:id="date2ErrorLbl" prefHeight="17.0" prefWidth="190.0" text="Välj korrekt hemresedatum" />
+                              <Label fx:id="date2ErrorLbl" prefHeight="17.0" prefWidth="190.0" style="-fx-background-color: #c0392b;" text="Välj korrekt hemresedatum" />
                               <DatePicker fx:id="datePicker2" editable="false" prefHeight="27.0" prefWidth="190.0" promptText="Hemresedatum" />
                            </children>
                            <HBox.margin>
@@ -114,7 +114,6 @@
                         </Label>
                      </children>
                   </HBox>
-                  <HBox alignment="BOTTOM_CENTER" prefHeight="100.0" prefWidth="200.0" GridPane.rowIndex="8" />
                   <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0" GridPane.rowIndex="2">
                      <children>
                         <ComboBox fx:id="fromAirportComboBox" prefHeight="40.0" prefWidth="400.0" promptText="Res från">
@@ -122,7 +121,7 @@
                               <Insets left="100.0" right="10.0" />
                            </HBox.margin>
                         </ComboBox>
-                        <Label fx:id="fromErrorLbl" text="Välj avreseort">
+                        <Label fx:id="fromErrorLbl" style="-fx-background-color: #c0392b;" text="Välj avreseort">
                            <font>
                               <Font size="15.0" />
                            </font></Label>
@@ -135,13 +134,13 @@
                               <Insets left="100.0" right="10.0" />
                            </HBox.margin>
                         </ComboBox>
-                        <Label fx:id="toErrorLbl" text="Välj destination">
+                        <Label fx:id="toErrorLbl" style="-fx-background-color: #c0392b;" text="Välj destination">
                            <font>
                               <Font size="15.0" />
                            </font></Label>
                      </children>
                   </HBox>
-                  <Label fx:id="sameAirportErrorLbl" prefHeight="20.0" prefWidth="438.0" text="Avreseort och destination kan ej vara samma" GridPane.halignment="CENTER" GridPane.rowIndex="1">
+                  <Label fx:id="sameAirportErrorLbl" prefHeight="28.0" prefWidth="438.0" style="-fx-background-color: #c0392b;" text="Avreseort och destination kan ej vara samma" GridPane.halignment="CENTER" GridPane.rowIndex="1">
                      <font>
                         <Font size="16.0" />
                      </font></Label>
