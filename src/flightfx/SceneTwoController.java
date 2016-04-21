@@ -8,21 +8,12 @@ package flightfx;
 import flightfx.model.Flight;
 import java.io.IOException;
 import java.net.URL;
-import java.sql.Date;
 import java.text.DateFormat;
-import java.text.Format;
-import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.time.LocalDate;
 import java.util.Calendar;
-import java.util.GregorianCalendar;
 import java.util.List;
 import java.util.ResourceBundle;
-import java.util.logging.Level;
-import java.util.logging.Logger;
-import javafx.beans.property.ReadOnlyObjectWrapper;
-import javafx.beans.property.SimpleStringProperty;
-import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -34,24 +25,22 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
-import javafx.scene.control.ListCell;
 import javafx.scene.control.TableCell;
 import javafx.scene.control.TableColumn;
-import javafx.scene.control.TableColumn.CellDataFeatures;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.control.cell.TextFieldTableCell;
 import javafx.stage.Stage;
-import javafx.util.Callback;
 import javafx.util.converter.DoubleStringConverter;
 import javafx.util.converter.IntegerStringConverter;
 import javax.ws.rs.core.GenericType;
 import javax.ws.rs.core.MediaType;
 
 /**
- * FXML Controller class
+ * SceneTwoController är FXML Controller class för SceneTwo, som visar
+ * tillgängliga flygavgångar för vald tidpunkt.
  *
- * @author Loki
+ * @author Grupp 2
  */
 public class SceneTwoController implements Initializable {
 
@@ -171,7 +160,6 @@ public class SceneTwoController implements Initializable {
 
     }
 
-
     @FXML
     public void backButtonAction(ActionEvent event) throws IOException {
         Parent root = FXMLLoader.load(getClass().getResource("SceneOne.fxml"));
@@ -238,7 +226,6 @@ public class SceneTwoController implements Initializable {
         depTimeColumn.setCellValueFactory(new PropertyValueFactory<Flight, String>("depTime"));
         durationColumn.setCellValueFactory(new PropertyValueFactory<Flight, String>("duration"));
         nbrOfConnectionsColumn.setCellValueFactory(new PropertyValueFactory<Flight, Integer>("nbrOfConnections"));
-       
 
         priceColumn.setCellFactory(TextFieldTableCell.forTableColumn(new DoubleStringConverter()));
         airlineColumn.setCellFactory(TextFieldTableCell.forTableColumn());
