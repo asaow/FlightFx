@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package flightfx;
 
 import java.io.IOException;
@@ -20,9 +15,10 @@ import javafx.scene.control.Label;
 import javafx.stage.Stage;
 
 /**
- * FXML Controller class
+ * SceneFiveController, FXML Controller class för SceneFive, visar bekräftelse
+ * för bokning och bokningsnummer.
  *
- * @author Loki
+ * @author Grupp 2
  */
 public class SceneFiveController implements Initializable {
 
@@ -35,6 +31,13 @@ public class SceneFiveController implements Initializable {
     @FXML
     private Label bookingIdLbl;
 
+    /**
+     * newTripButtonAction hanterar Startsida-knappen, går tillbaka till första
+     * sidan.
+     *
+     * @param event
+     * @throws IOException
+     */
     @FXML
     public void newTripButtonAction(ActionEvent event) throws IOException {
         Parent root = FXMLLoader.load(getClass().getResource("StartScene.fxml"));
@@ -45,6 +48,12 @@ public class SceneFiveController implements Initializable {
         stage.show();
     }
 
+    /**
+     * finishButtonAction hanterar Avsluta-knappen, avslutar applikatonen.
+     *
+     * @param event
+     * @throws IOException
+     */
     @FXML
     public void finishButtonAction(ActionEvent event) throws IOException {
         Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
@@ -52,13 +61,12 @@ public class SceneFiveController implements Initializable {
     }
 
     /**
-     * Initializes the controller class.
+     * Initializes the controller class. Visar bokningsnummer.
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
 
-       
-        bookingIdLbl.setText("Ditt bokningsnummer är: "+ SceneFourController.getBookingId());
+        bookingIdLbl.setText("Ditt bokningsnummer är: " + SceneFourController.getBookingId());
     }
 
 }
