@@ -29,7 +29,8 @@ import javax.ws.rs.core.GenericType;
 import javax.ws.rs.core.MediaType;
 
 /**
- * FXML Controller class
+ * SceneOneController, FXML Controller class för SceneOne, första fönstret för
+ * resebokningen.
  *
  * @author Grupp 2
  */
@@ -84,8 +85,16 @@ public class SceneOneController implements Initializable {
     private Label date2ErrorLbl;
     private Boolean allCorrect;
 
+    /**
+     * searchButtonAction kontrollerar så att alla uppgifter för resan är
+     * valda/inmatade, och hämtar dem.
+     *
+     * @param event
+     * @throws IOException
+     */
     @FXML
     public void searchButtonAction(ActionEvent event) throws IOException {
+
         // Nollställer felmeddelanden
         showErrorMessages(false);
         allCorrect = true;
@@ -125,14 +134,6 @@ public class SceneOneController implements Initializable {
             allCorrect = false;
         }
 
-// FELHANTERING för tur och retur, kan inte väljas än
-//        if (date2.isBefore(LocalDate.now())) {
-//            date1ErrorLbl.setVisible(true);
-//            allCorrect = false;
-//        }
-//        SceneTwoController.setFromCombo(fromCode);
-        //        SceneTwoController.setToCombo(toCode);
-        //        SceneTwoController.setDateOneWay(date1);
         /*
         Om inga fel finns, gå till nästa scen
          */
@@ -148,21 +149,13 @@ public class SceneOneController implements Initializable {
             stage.show();
         }
 
-//        Flight f = new Flight();
-//        f.setFromAirport(fromCode);
-//        f.setToAirport(toCode);
-//        
-//        Flight flight; 
-//        flight = FlightFx.client.target("http://localhost:8080/FlightServer/webresources/flights")
-//                .request()
-//                .post(Entity.entity(f, MediaType.APPLICATION_JSON),Flight.class);
-//                
-        //test
-//        fromCode = fromAirportComboBox.getSelectionModel().getSelectedItem().toString().substring(0, 3);
-//        toCode = toAirportComboBox.getSelectionModel().getSelectedItem().toString().substring(0, 3);
-//        System.out.println("fromCode airport "+ fromCode);
     }
 
+    /**
+     * showErrorMessages hanterar synlighet av felmeddelanden.
+     *
+     * @param b
+     */
     private void showErrorMessages(Boolean b) {
         fromErrorLbl.setVisible(b);
         toErrorLbl.setVisible(b);
@@ -172,6 +165,13 @@ public class SceneOneController implements Initializable {
 
     }
 
+    /**
+     * backButtonAction hanterar Tillbaka-knappen, går tillbaka till föregående
+     * scen.
+     *
+     * @param event
+     * @throws IOException
+     */
     @FXML
     public void backButtonAction(ActionEvent event) throws IOException {
         Parent root = FXMLLoader.load(getClass().getResource("StartScene.fxml"));
@@ -183,7 +183,9 @@ public class SceneOneController implements Initializable {
     }
 
     /**
-     * Initializes the controller class.
+     * Initializes the controller class. Hämtar alla flygplatser och visar dem i
+     * ComboBox för avreseort respektive destination. Sätter startvärden för
+     * datum, antal passagerare, enkelresa, restyp.
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
@@ -254,12 +256,6 @@ public class SceneOneController implements Initializable {
         // Felmeddelandena dolda från början
         showErrorMessages(false);
         allCorrect = true;
-
-        //Test för att printa ut valt datum
-        datePicker1.setOnAction(event -> {
-            date1 = datePicker1.getValue();
-            System.out.println("Selected date from sceneOne: " + date1);
-        });
 
     }
 
